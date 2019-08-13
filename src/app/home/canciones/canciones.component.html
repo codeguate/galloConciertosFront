@@ -4,14 +4,18 @@
     <div class="px-5 w-100 text-center">
       <img src="./../../../assets/png/logo.png" class="w-50 img-fluid" style="max-height: 100%;" >
       <div class="form-group d-flex w-100">
-        <input type="text" class="gallo-inputs mx-auto" id="" placeholder="Input field">
+        <ng2-completer [(ngModel)]="cancion1" placeholder="Vota por" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+        <!-- <input type="text" class="gallo-inputs mx-auto" id="" placeholder="Input field"> -->
       </div>
       <div class="form-group d-flex w-100">
-        <input type="text" class="gallo-inputs mx-auto" id="" placeholder="Input field">
+        <ng2-completer [(ngModel)]="cancion2" placeholder="Vota por" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+        <!-- <input type="text" class="gallo-inputs mx-auto" id="" placeholder="Input field"> -->
       </div>
       <div class="form-group d-flex w-100">
-        <input type="text" class="gallo-inputs mx-auto" id="" placeholder="Input field">
+      <ng2-completer [(ngModel)]="cancion3" placeholder="Vota por" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+      <!-- <input type="text" class="gallo-inputs mx-auto" id="" placeholder="Input field"> -->
       </div>
+
     </div>
 
 

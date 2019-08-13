@@ -10,3 +10,16 @@
   background-position: center;
   background-size: 100%;
 }
+
+.gallo-inputs>div>input{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
+  background-color: rgba(0,0,0,0);
+  border: 0!important;
+  background-image: url(./../../../assets/png/input.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}

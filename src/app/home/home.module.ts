@@ -7,6 +7,8 @@ import { DataTableModule } from 'angular-6-datatable';
 import {TooltipModule} from 'ng2-tooltip-directive';
 import { OwlModule } from 'ngx-owl-carousel';
 
+import { Ng2CompleterModule } from "ng2-completer";
+
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
@@ -47,6 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     OwlModule,
+    Ng2CompleterModule,
     SimpleNotificationsModule.forRoot(),
     LoadersCssModule,
     NouisliderModule,

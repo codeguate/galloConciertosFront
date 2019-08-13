@@ -4,6 +4,7 @@ import { NotificationsService } from 'angular2-notifications';
 import { BandasService } from "./../_services/bandas.service";
 import { CancionesService } from "./../_services/canciones.service";
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { CompleterService, CompleterData } from 'ng2-completer';
 declare var $: any
 
 @Component({
@@ -18,15 +19,32 @@ export class CancionesComponent implements OnInit {
   funcionesTable:any
   areasTable:any
   @BlockUI() blockUI: NgBlockUI;
+  protected cancion1: string;
+  protected cancion2: string;
+  protected cancion3: string;
+  protected captain: string;
+  protected dataService: CompleterData;
+  protected searchData = [
+    { color: 'red', value: '#f00' },
+    { color: 'green', value: '#0f0' },
+    { color: 'blue', value: '#00f' },
+    { color: 'cyan', value: '#0ff' },
+    { color: 'magenta', value: '#f0f' },
+    { color: 'yellow', value: '#ff0' },
+    { color: 'black', value: '#000' }
+  ];
   constructor(
     private route: ActivatedRoute,
     private _service: NotificationsService,
     private parentService: BandasService,
     private mainService: CancionesService,
+    private completerService: CompleterService,
     private router: Router,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
+
     this.getParams();
   }
 
@@ -43,7 +61,11 @@ export class CancionesComponent implements OnInit {
                             console.log(response);
                             $(".body").addClass('body-interno');
                             $(".body").removeClass('body');
+                            this.dataService = this.completerService.local(this.SelectedData.canciones, 'titulo', 'titulo');
                             this.blockUI.stop();
+                            setTimeout(() => {
+                              $(".gallo-inputs>div>input").css("border","none");
+                            }, 300);
                           }).catch(error => {
                             console.clear
                             this.blockUI.stop();
