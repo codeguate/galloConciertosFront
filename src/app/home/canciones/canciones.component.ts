@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
+import { BandasService } from "./../_services/bandas.service";
+import { CancionesService } from "./../_services/canciones.service";
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 declare var $: any
 
 @Component({
-  selector: 'app-evento',
-  templateUrl: './evento.component.html',
-  styleUrls: ['./evento.component.css']
+  selector: 'app-canciones',
+  templateUrl: './canciones.component.html',
+  styleUrls: ['./canciones.component.css']
 })
-export class EventoComponent implements OnInit {
-  dataSearch = {
-    titulo:'',
-    fecha:''
-  }
+export class CancionesComponent implements OnInit {
+  id:number
   sliderInicio = 0;
   SelectedData:any = null
   funcionesTable:any
@@ -22,8 +21,8 @@ export class EventoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private _service: NotificationsService,
-    // private parentService: EventosFuncionesService,
-    // private mainService: EventosFuncionesAreaService,
+    private parentService: BandasService,
+    private mainService: CancionesService,
     private router: Router,
   ) { }
 
@@ -32,22 +31,24 @@ export class EventoComponent implements OnInit {
   }
 
   getParams(){
-    this.dataSearch.titulo = this.route.snapshot.paramMap.get("id");
-    this.dataSearch.fecha = this.route.snapshot.paramMap.get("fecha");
-    this.buscarSingle(this.dataSearch)
+    this.id = +this.route.snapshot.paramMap.get("id");
+    this.cargarSingle(this.id)
   }
 
   cargarSingle(id:number){
     this.blockUI.start();
-      // this.parentService.getSingle(id)
-      //                     .then(response => {
-      //                       this.SelectedData = response;
-      //                       this.blockUI.stop();
-      //                     }).catch(error => {
-      //                       console.clear
-      //                       this.blockUI.stop();
-      //                       this.createError(error)
-      //                     })
+      this.parentService.getSingle(id)
+                          .then(response => {
+                            this.SelectedData = response;
+                            console.log(response);
+                            $(".body").addClass('body-interno');
+                            $(".body").removeClass('body');
+                            this.blockUI.stop();
+                          }).catch(error => {
+                            console.clear
+                            this.blockUI.stop();
+                            this.createError(error)
+                          })
   }
 
   buscarSingle(search:any){

@@ -167,3 +167,10 @@ input[type="radio"]:checked ~ label {
     backface-visibility: hidden;
     position: relative;
 }
+
+.owl-next1{
+  font-size: 4rem!important;
+  margin-left: 10%!important;
+  margin-top: 2%!important;
+  position: absolute!important;
+}

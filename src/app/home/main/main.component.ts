@@ -5,8 +5,8 @@ import { Location } from '@angular/common';
 import { NavComponent } from "./../nav.component";
 import { NotificationsService } from 'angular2-notifications';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { BandasService } from "./../_services/bandas.service";
 
-import { EventosFuncionesService } from "./../_services/eventos-funciones.service";
 import { AppComponent } from "./../../app.component";
 import {TranslateService} from '@ngx-translate/core';
 
@@ -23,6 +23,10 @@ sliderInicio = 0;
 public _id: number;
 public search: any;
 agregados: any[] = [];
+mySlideImages = [1,2,3].map((i)=> `https://picsum.photos/640/480?image=${i}`);
+myCarouselImages =[1,2,3,4,5,6].map((i)=>`https://picsum.photos/640/480?image=${i}`);
+mySlideOptions={items: 3, dots: false, nav: true,loop:true,autoplay:false,autoplayTimeout:3000,autoplayHoverPause:true};
+myCarouselOptions={items: 3, dots: true, nav: true};
 selectedData: any;
 @BlockUI() blockUI: NgBlockUI;
 browserLang:any = this.parentComponent.browserLang;
@@ -34,8 +38,8 @@ constructor(
   private _service: NotificationsService,
   private route: ActivatedRoute,
   private location: Location,
-  private mainService: EventosFuncionesService,
   private router: Router,
+  private BandasService:BandasService,
   private app: AppComponent,
   public translate: TranslateService,
   private nav:NavComponent
@@ -55,26 +59,9 @@ ngOnInit() {
     $('#logoTipo').removeClass('d-none');
     this.blockUI.stop();
   }, 500);
-  this.translate.addLangs(['en', 'es']);
-  this.translate.setDefaultLang('en');
-  this.translate = this.app.translate;
-  // console.log(this.app.translate);
-  // console.log(this.translate);
-  // $(document).ready(data => {
-  //     this.changeLang()
-  //     this.cargarSlides();
-  //     this.ngAfterViewInit()
-  //     this.cargarTop();
-  // })
-}
-ngAfterViewInit() {
-  // setTimeout(() => {
-  //     this.parentComponent.searchContent = '';
-  // });
-}
-changeLang(){
-  this.translate.use(this.parentComponent.browserLang);
-  this.translate.resetLang(this.parentComponent.browserLang)
+  $(document).ready(data => {
+      this.cargarSlides();
+  })
 }
 navegar(url:string,id?:number){
   this.router.navigate([url])
@@ -82,35 +69,6 @@ navegar(url:string,id?:number){
     localStorage.setItem('idCategory',id+'');
   }
 }
-getFuciones(){
-  this.blockUI.start();
-  let today = new Date();
-  let dd = String(today.getDate()).padStart(2, '0');
-  let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  let yyyy = today.getFullYear();
-  let stoday = yyyy + '-' + mm + '-' + dd;
-  let data = {
-    id:stoday,
-    state:'0',
-    filter:'proximos'
-  }
-    this.mainService.getAllFilter(data)
-                        .then(response => {
-                          response.forEach(element => {
-                            element.idtitulo = element.titulo.replace(/ /g,'_');
-                          });
-                          this.Table = response;
-                          // console.log(response);
-
-                          this.blockUI.stop();
-                        }).catch(error => {
-                          console.clear
-                          this.blockUI.stop();
-                          this.createError(error)
-                        })
-
-
-  }
   cargarSlides(){
       this.blockUI.start();
       let today = new Date();
@@ -123,13 +81,39 @@ getFuciones(){
         state:'0',
         filter:'proximos-principales'
       }
-      this.mainService.getAllFilter(data)
+      this.BandasService.getAll()
                           .then(response => {
-                            this.slides = response;
-                            // console.log(this.slides);
-                            this.sliderInicio = this.slides.length<10?0:Math.round(Math.random() * (response.length));
-                            // console.clear()
-                            this.getFuciones();
+                            this.Table = response;
+                            console.log(response);
+                            setTimeout(() => {
+                              $(".owl-next").css("font-size", '4rem');
+                              $(".owl-next").css('margin-left', '10%');
+                              $(".owl-next").css('margin-top', '2%');
+                              $(".owl-next").css('position', 'absolute');
+                              $(".owl-next").css('z-index', '100');
+
+                              $(".owl-prev").css("font-size", '4rem');
+                              $(".owl-prev").css('right', '60%');
+                              $(".owl-prev").css('margin-top', '2%');
+                              $(".owl-prev").css('position', 'absolute');
+                              $(".owl-prev").css('z-index', '100');
+
+
+
+                              $(".owl-dots").css('background-image', 'url(http://documentos.devcodegt.com/gallo/boton.png)');
+                              $(".owl-dots").css('margin-top', '5%');
+                              $(".owl-dots").css('position', 'absolute');
+                              $(".owl-dots").css('width', '100%');
+                              var owl = $('.owl-carousel');
+                              owl.on('mousewheel', '.owl-stage', function (e) {
+                                if (e.deltaY>0) {
+                                    owl.trigger('next.owl');
+                                } else {
+                                    owl.trigger('prev.owl');
+                                }
+                                e.preventDefault();
+                            });
+                            }, 300);
                             this.blockUI.stop();
                           }).catch(error => {
 

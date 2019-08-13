@@ -5,6 +5,7 @@ import { LoadersCssModule } from 'angular2-loaders-css';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { DataTableModule } from 'angular-6-datatable';
 import {TooltipModule} from 'ng2-tooltip-directive';
+import { OwlModule } from 'ngx-owl-carousel';
 
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
@@ -18,9 +19,6 @@ import { NouisliderModule } from 'ng2-nouislider';
 
 import { UsersService } from './_services/users.service';
 import { GlobalsService } from './_services/globals.service';
-import { EventosFuncionesAreaService } from './_services/eventos-funciones-area.service';
-import { EventosFuncionesService } from './_services/eventos-funciones.service';
-import { EventosVentasService } from './_services/eventos-ventas.service';
 import { EventosService } from './_services/eventos.service';
 
 import { LoginComponent } from './login/login.component';
@@ -29,10 +27,7 @@ import { RecoveryComponent } from './recovery/recovery.component';
 import { RegisterComponent } from './register/register.component';
 import { MainComponent } from './main/main.component';
 import { EventoComponent } from './evento/evento.component';
-import { LocalidadesComponent } from './localidades/localidades.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { ComprobanteComponent } from './comprobante/comprobante.component';
-import { ConocenosComponent } from './conocenos/conocenos.component';
+import { CancionesComponent } from './canciones/canciones.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -51,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    OwlModule,
     SimpleNotificationsModule.forRoot(),
     LoadersCssModule,
     NouisliderModule,
@@ -65,20 +61,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     RecoveryComponent,
     MainComponent,
     EventoComponent,
-    LocalidadesComponent,
-    CheckoutComponent,
-    ComprobanteComponent,
-    ConocenosComponent,
+    CancionesComponent,
   ],
   providers: [
     AuthService,
     UsersService,
     EventosService,
-    EventosFuncionesService,
     AuthGuard,
-    EventosVentasService,
     HomeGuard,
-    EventosFuncionesAreaService,
     GlobalsService,
   ]
 })

@@ -29,6 +29,8 @@
               "src/assets/css/font-awesome.css",
               "src/assets/css/loaders.min.css",
               "src/assets/css/nouislider.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.css",
               "src/styles.css"
             ],
             "scripts": [
@@ -36,6 +38,7 @@
               "src/assets/js/jquery-ui.js",
               "src/assets/js/popper.js",
               "src/assets/js/bootstrap.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js",
               "src/assets/js/upload.js"
             ],
             "es5BrowserSupport": true

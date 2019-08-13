@@ -6,19 +6,28 @@
 html,
 .body {
   width: 100% !important;
-  height: auto !important;
+  height: 100% !important;
   font-size: 1rem;
   text-align: left;
+  background-image: url(./assets/png/fondo.png) !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 html, body {
   background-color: #ffffff !important;
 }
+.hoverclick img:hover{
 
+  filter: contrast(115%);
+  filter: brightness(95%);
+  filter: sepia(100%);
+  /* box-shadow:#000000 5px 15px 20px 0px; */
+}
 .header{
   text-align: center;
   width: 100%;
   height: 5rem;
-  background-image: url(./assets/png/01-Bienvenido/MaskGroup15.png);
   background-size: 100% 100%;
 
 }
@@ -44,25 +53,15 @@ html, body {
   border: 0px;
   font-size: 12pt;
 }
-.promotor{
-  background-image: url(./assets/png/02-LogIn/PromotoryAdministrador/Image19.png);
-  background-position: -30% bottom;
+
+
+.body-interno {
+  width: 100% !important;
+  height: 100% !important;
+  font-size: 1rem;
+  text-align: left;
+  background-image: url(./assets/png/fondo-interno.png) !important;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: 60% 65%;
-
-}
-.edecan{
-  background-image: url(./assets/png/02-LogIn/Edecan/Group2500.png);
-  background-position: right bottom;
-  background-repeat: no-repeat;
-  background-size: 90% 100%;
-
-}
-
-.administrador{
-  background-image: url(./assets/png/02-LogIn/PromotoryAdministrador/Image19.png);
-  background-position: 135% bottom;
-  background-repeat: no-repeat;
-  background-size: 60% 65%;
-
+  background-size: 100% 100%;
 }
