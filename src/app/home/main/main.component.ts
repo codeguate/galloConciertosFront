@@ -25,7 +25,7 @@ public search: any;
 agregados: any[] = [];
 mySlideImages = [1,2,3].map((i)=> `https://picsum.photos/640/480?image=${i}`);
 myCarouselImages =[1,2,3,4,5,6].map((i)=>`https://picsum.photos/640/480?image=${i}`);
-mySlideOptions={items: 3, dots: false, nav: true,loop:true,autoplay:false,autoplayTimeout:3000,autoplayHoverPause:true,autoWidth:true};
+mySlideOptions={items: 3, dots: false, nav: true,loop:true,autoplay:true,autoplayTimeout:3000,autoplayHoverPause:true,autoWidth:true};
 myCarouselOptions={items: 3, dots: true, nav: true};
 selectedData: any;
 @BlockUI() blockUI: NgBlockUI;
@@ -65,16 +65,17 @@ ngOnInit() {
   })
 }
 navegar(url:string,id?:number){
+  this.blockUI.start()
   if(+localStorage.getItem('currentId')>0){
+    this.blockUI.stop()
 
     this.router.navigate([url])
   }else{
     this.foreignId = id
     this.mostrar('login');
     $("#loginModal").modal('show');
-  }
-  if(id && id>0){
-    localStorage.setItem('idCategory',id+'');
+  this.blockUI.stop()
+
   }
 }
   cargarSlides(){
@@ -89,7 +90,7 @@ navegar(url:string,id?:number){
         state:'0',
         filter:'evento'
       }
-      this.BandasService.getAll()
+      this.BandasService.getAllFilter(data)
                           .then(response => {
                             this.Table = response;
                             console.log(response);
