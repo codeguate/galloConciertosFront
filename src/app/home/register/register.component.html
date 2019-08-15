@@ -9,6 +9,23 @@
                 <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   <input type="text" name="nombres" id="nombres" ngModel #nombres="ngModel" class="form-control gallo-inputs" placeholder="Nombre" required="required" title="Nombre">
                 </div>
+                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                  <input type="password" name="password" id="password" ngModel #password="ngModel" class="form-control gallo-inputs" placeholder="Password" required="required" title="Password">
+                </div>
+                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                  <input type="password" name="password_rep" id="password_rep" ngModel #password_rep="ngModel" class="form-control gallo-inputs" placeholder="Password" required="required" title="Password">
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                  <div class="alert alert-danger" *ngIf="password.value!='' && password.value.length<8">
+                    <strong>El password debe tener al menos 8 caracteres!</strong>
+                  </div>
+                  <div class="alert alert-danger" *ngIf="password_rep.value!='' && password.value!=password_rep.value ">
+                    <strong>Los dos passwords deben coincidir!</strong>
+                  </div>
+
+                </div>
                 <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   <input type="text" name="dpi" id="dpi" ngModel #dpi="ngModel" class="form-control gallo-inputs" placeholder="DPI" required="required" title="DPI" (keyup)="cuiIsValid($event)" [(ngModel)]="DPI">
                 </div>
@@ -19,7 +36,12 @@
                   <input type="number" name="edad" id="edad" ngModel #edad="ngModel" class="form-control gallo-inputs" placeholder="Edad" [ngClass]="{'border border-danger': edad.value<18,'border border-success': edad.value>=18}" required="required" title="Edad" min="18" max="100">
                 </div>
                 <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                  <input type="text" name="genero" id="genero" ngModel #genero="ngModel" class="form-control gallo-inputs " placeholder="Genero" required="required" title="Genero" >
+                  <select name="genero" id="genero" ngModel #genero="ngModel" class="form-control gallo-selects" required="required" title="Genero">
+                    <option value="">Genero</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                  </select>
+                  <!-- <input type="text" name="genero" id="genero" ngModel #genero="ngModel" class="form-control gallo-inputs " placeholder="Genero" required="required" title="Genero" > -->
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-3 row mt-3 text-light">
                     <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 offset-xs-1 offset-sm-1 offset-md-1 offset-lg-1 text-left">
