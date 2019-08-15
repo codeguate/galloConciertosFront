@@ -43,6 +43,7 @@ export class RecoveryComponent implements OnInit {
                       this.createSuccess("Hemos enviado un correo con tu nueva clave!")
                       this.data.username = '';
                       this.data.password = '';
+                      this.mostrar('login')
                       this.blockUI.stop()
                     })
                     .catch( error => {

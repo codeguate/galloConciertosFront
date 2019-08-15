@@ -22,13 +22,13 @@
 <div class="modal fade " id="loginModal">
   <div class="modal-dialog  modal-lg">
     <div class="modal-content" *ngIf="foreignId">
-        <div class="modal-body body-interno-new " id="loginBody">
+        <div class="modal-body body-interno-new  d-none" id="loginBody">
             <app-login foreignId="{{foreignId}}"></app-login>
         </div>
         <div class="modal-body body-interno-new d-none" id="recoveryBody">
             <app-recovery></app-recovery>
         </div>
-        <div class="modal-body body-interno-new d-none" id="registroBody">
+        <div class="modal-body body-interno-new" id="registroBody">
             <app-register foreignId="{{foreignId}}"></app-register>
         </div>
     </div>

@@ -62,7 +62,8 @@ ngOnInit() {
   }, 500);
   $(document).ready(data => {
       this.cargarSlides();
-  })
+
+    })
 }
 navegar(url:string,id?:number){
   this.blockUI.start()
@@ -120,8 +121,9 @@ navegar(url:string,id?:number){
                                 } else {
                                     owl.trigger('prev.owl');
                                 }
-                                e.preventDefault();
-                            });
+                                  e.preventDefault();
+                              });
+
                             }, 300);
                             this.blockUI.stop();
                           }).catch(error => {

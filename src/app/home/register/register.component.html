@@ -1,13 +1,19 @@
 
 <div class="">
     <div class="row">
-      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 offset-xs-1 offset-sm-1 offset-md-1 offset-lg-1 text-left border-secondary round-border">
-          <form class="form-signin m-5" autocomplete="off" id="register-form"  #registerForm="ngForm" (ngSubmit)="insert(registerForm.value)">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1 text-left border-secondary round-border">
+          <form class="form-signin" autocomplete="off" id="register-form"  #registerForm="ngForm" (ngSubmit)="insert(registerForm.value)">
 
-            <h1 class="h3 text-dark mb-3 mt-3 font-weight-bold">Formulario de Aplicacion</h1>
+            <h1 class="h3 text-light mb-3 mt-3 font-weight-bold">Registrate para Votar</h1>
               <div class="row">
                 <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   <input type="text" name="nombres" id="nombres" ngModel #nombres="ngModel" class="form-control gallo-inputs" placeholder="Nombre" required="required" title="Nombre">
+                </div>
+                <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <input type="email" name="email" id="email" ngModel #email="ngModel" (blur)="usernameFind(email.value)" [email]="true" [ngClass]="{'border border-danger': ((email.dirty || email.touched) && email.invalid ),'border border-success': ((email.dirty || email.touched) && !email.invalid )}" class="form-control gallo-inputs" placeholder="Correo Electronico" required="required" title="Correo Electronico">
+                </div>
+                <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <input type="text" name="username" id="username" ngModel #username="ngModel" class="form-control gallo-inputs" placeholder="Usuario" [(ngModel)]="usernameF" required="required" title="Usuario">
                 </div>
                 <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6">
                   <input type="password" name="password" id="password" ngModel #password="ngModel" class="form-control gallo-inputs" placeholder="Password" required="required" title="Password">
@@ -28,9 +34,6 @@
                 </div>
                 <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   <input type="text" name="dpi" id="dpi" ngModel #dpi="ngModel" class="form-control gallo-inputs" placeholder="DPI" required="required" title="DPI" (keyup)="cuiIsValid($event)" [(ngModel)]="DPI">
-                </div>
-                <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <input type="email" name="email" id="email" ngModel #email="ngModel" [email]="true" [ngClass]="{'border border-danger': ((email.dirty || email.touched) && email.invalid ),'border border-success': ((email.dirty || email.touched) && !email.invalid )}" class="form-control gallo-inputs" placeholder="Correo Electronico" required="required" title="Correo Electronico">
                 </div>
                 <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6">
                   <input type="number" name="edad" id="edad" ngModel #edad="ngModel" class="form-control gallo-inputs" placeholder="Edad" [ngClass]="{'border border-danger': edad.value<18,'border border-success': edad.value>=18}" required="required" title="Edad" min="18" max="100">

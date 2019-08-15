@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
   title:any = "Registro"
   Table:any
   comboParent:any
+  usernameF:string =""
   enviarData=false
   DPI:string = ""
   numeroTelefono:string = ""
@@ -53,7 +54,13 @@ export class RegisterComponent implements OnInit {
 
     });
   }
-
+  usernameFind(email:string){
+    if(email.indexOf("@")>0){
+      this.usernameF = email.split("@")[0]
+    }else{
+      this.usernameF = email
+    }
+  }
   select(dat:boolean){
     this.selected = dat;
   }
@@ -113,7 +120,7 @@ export class RegisterComponent implements OnInit {
 
     this.blockUI.start();
     formValue.dpi =  formValue.dpi.replace(/ /g, '').replace(/-/g, '')
-    formValue.password =  formValue.email.split('@')[0]
+    formValue.password =  formValue.password
     formValue.username =  formValue.email.split('@')[0]
     let string = formValue.dpi.replace(/ /g, '').replace(/-/g, '')+formValue.telefono+":"+formValue.username;
     let encodedString = btoa(string);
