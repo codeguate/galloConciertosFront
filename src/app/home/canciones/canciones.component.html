@@ -4,15 +4,15 @@
     <div class="px-5 w-100 text-center">
       <img src="./../../../assets/png/logo.png" class="w-50 img-fluid" style="max-height: 100%;" >
       <div class="form-group d-flex w-100">
-        <ng2-completer [(ngModel)]="cancion1" placeholder="Selecciona la cancion" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+        <ng2-completer openOnFocus="true" [(ngModel)]="cancion1" placeholder="Selecciona la cancion" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
         <!-- <input type="text" class="gallo-inputs mx-auto" id="" placeholder="Input field"> -->
       </div>
       <div class="form-group d-flex w-100">
-        <ng2-completer [(ngModel)]="cancion2" placeholder="Selecciona la cancion" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+        <ng2-completer openOnFocus="true" [(ngModel)]="cancion2" placeholder="Selecciona la cancion" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
         <!-- <input type="text" class="gallo-inputs mx-auto" id="" placeholder="Input field"> -->
       </div>
       <div class="form-group d-flex w-100">
-      <ng2-completer [(ngModel)]="cancion3" placeholder="Selecciona la cancion" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+      <ng2-completer openOnFocus="true" [(ngModel)]="cancion3" placeholder="Selecciona la cancion" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
       <!-- <ngx-select placeholder="Vota por" class="gallo-inputs mx-auto"  [items]="canciones" [(ngModel)]="cancion3"></ngx-select> -->
       <!-- <input type="text" class="gallo-inputs mx-auto" id="" placeholder="Input field"> -->
       </div>
@@ -27,20 +27,33 @@
   </div>
 
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 d-flex img_banda">
-      <img src="{{SelectedData.foto1}}" style="width:80%;" class="img-fluid ml-auto">
+      <img src="{{SelectedData.foto1}}" style="width:80%;" class="img-fluid ml-auto"><br>
 
   </div>
-
+  <h5 class="text-light w-75 text-right">{{SelectedData.nombre}}</h5>
   <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 offset-xs-1 offset-sm-1 offset-md-1 offset-lg-1 ">
 
-    <div class="row w-100">
+      <div class="row w-100">
 
-      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 offset-xs-2 offset-sm-2 offset-md-2 offset-lg-2">
+          <button class="btn btn-lg btn-primary btn-block gallo-btn m-auto" type="button" (click)="navegar('../../home')" >Atras</button>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <img src="./../../../assets/png/logo-spotify.png" class="img-fluid" style="max-height: 100%;" >
+        </div>
 
       </div>
 
     </div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <owl-carousel *ngIf="Table" style="width: 100%;height:auto;" [options]="mySlideOptions"  [carouselClasses]="['owl-theme', 'sliding']" >
+    <li *ngFor="let data of Table"  style="padding-right:1rem;padding-left:1rem;list-style: none;cursor:pointer;text-align: center;display:flex;" (click)="navegar('votar/'+data.id,data.id)">
+        <!-- <img class="logo" style="width: auto; height:75px;" src="{{(data.logo!='')?data.logo:'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_MENUpage_perseus/apps/facebook.288e99d.png'}}"> -->
+        <img class="logo" style="width: 200px; height:200px;margin:auto;" src="{{data.bandas.logo}}">
+    </li>
+  </owl-carousel>
+</div>
 
-  </div>
+
 
 </div>

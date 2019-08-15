@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 import { BandasService } from "./../_services/bandas.service";
+import { Location, LocationStrategy } from '@angular/common';
 import { UsersService } from "./../_services/users.service";
 import { CancionesService } from "./../_services/canciones.service";
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
@@ -17,7 +18,11 @@ export class CancionesComponent implements OnInit {
   id:number
   sliderInicio = 0;
   SelectedData:any = null
-  funcionesTable:any
+  Table:any
+  mySlideImages = [1,2,3].map((i)=> `https://picsum.photos/640/480?image=${i}`);
+  myCarouselImages =[1,2,3,4,5,6].map((i)=>`https://picsum.photos/640/480?image=${i}`);
+  mySlideOptions={items: 6, dots: false, nav: true,loop:true,autoplay:true,autoplayTimeout:3000,autoplayHoverPause:true,autoWidth:true};
+  myCarouselOptions={items: 3, dots: true, nav: true};
   areasTable:any
   @BlockUI() blockUI: NgBlockUI;
   protected cancion1: string = '';
@@ -40,6 +45,7 @@ export class CancionesComponent implements OnInit {
     private _service: NotificationsService,
     private parentService: BandasService,
     private UsersService: UsersService,
+    private location: Location,
     private mainService: CancionesService,
     private completerService: CompleterService,
     private router: Router,
@@ -47,10 +53,14 @@ export class CancionesComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.cargarFunciones();
     this.getParams();
   }
+  goBack(){
+    console.log("prueba");
 
+    this.location.back();
+  }
   getParams(){
     this.id = +this.route.snapshot.paramMap.get("id");
     this.cargarSingle(this.id)
@@ -68,7 +78,7 @@ export class CancionesComponent implements OnInit {
                           .then(response => {
                             this.SelectedData = response.bandas;
                             this.SelectedData.social = response
-                            console.log(this.SelectedData);
+                            // console.log(this.SelectedData);
                             $(".body").addClass('body-interno');
                             $(".body").removeClass('body');
                             this.dataService = this.completerService.local(this.SelectedData.canciones, 'titulo', 'titulo');
@@ -94,7 +104,7 @@ export class CancionesComponent implements OnInit {
     // }
       this.UsersService.getSingle(search)
                           .then(response => {
-                            console.log(response)
+                            // console.log(response)
                             response.votos.forEach(element => {
                               if(element.banda==this.id){
                                 // console.log($(".gallo-inputs"));
@@ -152,42 +162,62 @@ export class CancionesComponent implements OnInit {
                           })
   }
 
-  cargarFunciones(id:number){
-    this.blockUI.start();
-    let today = new Date();
-    let dd = String(today.getDate()).padStart(2, '0');
-    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    let yyyy = today.getFullYear();
-    let hh = String(today.getHours()).padStart(2, '0');
-    let MM = String(today.getMinutes()).padStart(2, '0'); //January is 0!
-    let ss = String(today.getSeconds()).padStart(2, '0'); //January is 0!
-    let stoday = yyyy + '-' + mm + '-' + dd + ' ' + hh + ':' + MM + ':' + ss;
+  cargarFunciones(){
     let data = {
-      id:id,
-      state:stoday,
-      filter:'proximos_eventos'
+      id:1,
+      state:'0',
+      filter:'evento'
     }
-      // this.parentService.getAllFilter(data)
-      //                     .then(response => {
-      //                       this.funcionesTable = response;
-      //                       // console.log(response);
+    this.parentService.getAllFilter(data)
+                          .then(response => {
+                            this.Table = response;
+                            // console.log(response);
+                            setTimeout(() => {
+                              $(".owl-next").css("font-size", '4rem');
+                              $(".owl-next").css('margin-left', '10%');
+                              $(".owl-next").css('margin-top', '-2%');
+                              $(".owl-next").css('position', 'absolute');
+                              $(".owl-next").css('z-index', '100');
 
-      //                       this.blockUI.stop();
-      //                     }).catch(error => {
-      //                       console.clear
-      //                       this.blockUI.stop();
-      //                       this.createError(error)
-      //                     })
+                              $(".owl-prev").css("font-size", '4rem');
+                              $(".owl-prev").css('right', '60%');
+                              $(".owl-prev").css('margin-top', '-2%');
+                              $(".owl-prev").css('position', 'absolute');
+                              $(".owl-prev").css('z-index', '100');
+
+
+
+                              $(".owl-dots").css('background-image', 'url(http://documentos.devcodegt.com/gallo/boton.png)');
+                              $(".owl-dots").css('margin-top', '5%');
+                              $(".owl-dots").css('position', 'absolute');
+                              $(".owl-dots").css('width', '100%');
+                              var owl = $('.owl-carousel');
+                              owl.on('mousewheel', '.owl-stage', function (e) {
+                                if (e.deltaY>0) {
+                                    owl.trigger('next.owl');
+                                } else {
+                                    owl.trigger('prev.owl');
+                                }
+                                e.preventDefault();
+                            });
+                            }, 500);
+                            this.blockUI.stop();
+                          }).catch(error => {
+                            console.clear
+                            this.blockUI.stop();
+                            this.createError(error)
+                          })
   }
   navegar(url:string,id?:number){
-    localStorage.removeItem('lastLinkUrl')
-    if (!localStorage.getItem('currentUser')) {
-      localStorage.setItem('lastLinkUrl',url);
-      $('#loginTemplate').removeClass('container');
-      $('#generalModalDetalle').modal("show");
-    }else{
-      this.router.navigate([url])
-    }
+    this.router.navigate([url])
+
+    this.id = id;
+    this.cargarSingle(this.id)
+    this.buscarSingle(+localStorage.getItem('currentId'))
+    setTimeout(() => {
+      location.reload();
+    }, 200);
+
   }
   collapse(str:string){
     if($('#'+str).collapse("show")){
