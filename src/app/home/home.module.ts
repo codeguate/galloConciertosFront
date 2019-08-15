@@ -6,6 +6,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import { DataTableModule } from 'angular-6-datatable';
 import {TooltipModule} from 'ng2-tooltip-directive';
 import { OwlModule } from 'ngx-owl-carousel';
+import { NgxSelectModule } from 'ngx-select-ex';
 
 import { Ng2CompleterModule } from "ng2-completer";
 
@@ -50,6 +51,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     OwlModule,
     Ng2CompleterModule,
+    NgxSelectModule,
     SimpleNotificationsModule.forRoot(),
     LoadersCssModule,
     NouisliderModule,

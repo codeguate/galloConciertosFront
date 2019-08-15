@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 import { BandasService } from "./../_services/bandas.service";
+import { UsersService } from "./../_services/users.service";
 import { CancionesService } from "./../_services/canciones.service";
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { CompleterService, CompleterData } from 'ng2-completer';
@@ -19,9 +20,10 @@ export class CancionesComponent implements OnInit {
   funcionesTable:any
   areasTable:any
   @BlockUI() blockUI: NgBlockUI;
-  protected cancion1: string;
-  protected cancion2: string;
-  protected cancion3: string;
+  protected cancion1: string = '';
+  protected cancion2: string = '';
+  protected cancion3: string = '';
+  protected canciones: any =[];
   protected captain: string;
   protected dataService: CompleterData;
   protected searchData = [
@@ -37,6 +39,7 @@ export class CancionesComponent implements OnInit {
     private route: ActivatedRoute,
     private _service: NotificationsService,
     private parentService: BandasService,
+    private UsersService: UsersService,
     private mainService: CancionesService,
     private completerService: CompleterService,
     private router: Router,
@@ -51,17 +54,27 @@ export class CancionesComponent implements OnInit {
   getParams(){
     this.id = +this.route.snapshot.paramMap.get("id");
     this.cargarSingle(this.id)
+    this.buscarSingle(+localStorage.getItem('currentId'))
   }
 
   cargarSingle(id:number){
     this.blockUI.start();
+      let data = {
+        id:1,
+        state:'0',
+        filter:'evento'
+      }
       this.parentService.getSingle(id)
                           .then(response => {
-                            this.SelectedData = response;
-                            console.log(response);
+                            this.SelectedData = response.bandas;
+                            this.SelectedData.social = response
+                            console.log(this.SelectedData);
                             $(".body").addClass('body-interno');
                             $(".body").removeClass('body');
                             this.dataService = this.completerService.local(this.SelectedData.canciones, 'titulo', 'titulo');
+                            response.bandas.canciones.forEach(element => {
+                              this.canciones.push(element.titulo)
+                            });
                             this.blockUI.stop();
                             setTimeout(() => {
                               $(".gallo-inputs>div>input").css("border","none");
@@ -74,41 +87,69 @@ export class CancionesComponent implements OnInit {
   }
 
   buscarSingle(search:any){
-    this.blockUI.start();
-    let data = {
-      id:search.titulo.replace(/_/g,' '),
-      state:search.fecha,
-      filter:'buscar'
-    }
-      // this.parentService.getAllFilter(data)
-      //                     .then(response => {
-      //                       this.blockUI.stop();
-      //                       this.cargarFunciones(response.evento);
-      //                       this.cargarAreas(response.id);
-      //                       this.cargarSingle(response.id);
-      //                     }).catch(error => {
-      //                       console.clear
-      //                       this.blockUI.stop();
-      //                       this.createError(error)
-      //                     })
+    // let data = {
+    //   id:search.titulo.replace(/_/g,' '),
+    //   state:search.fecha,
+    //   filter:'buscar'
+    // }
+      this.UsersService.getSingle(search)
+                          .then(response => {
+                            console.log(response)
+                            response.votos.forEach(element => {
+                              if(element.banda==this.id){
+                                // console.log($(".gallo-inputs"));
+
+                                setTimeout(() => {
+                                  if(!$("#btnVotar").hasClass('d-none')){
+                                    $("#btnVotar").addClass('d-none')
+                                  }
+
+                                  if(!$(".gallo-inputs").children("div").children("input").attr('readOnly'))
+                                  {
+                                    $(".gallo-inputs").children("div").children("input").attr('readOnly',true)
+                                  }
+                                }, 200);
+                                if(this.cancion1==""){
+                                  this.cancion1=element.titulo
+                                }else
+                                if(this.cancion2==""){
+                                  this.cancion2=element.titulo
+                                }else
+                                if(this.cancion3==""){
+                                  this.cancion3=element.titulo
+                                }
+                              }
+                            });
+                            this.blockUI.stop();
+                          }).catch(error => {
+                            console.clear
+                            this.blockUI.stop();
+                            this.createError(error)
+                          })
   }
 
   cargarAreas(id:number){
     this.blockUI.start();
     let data = {
-      id:0,
-      state:id,
-      filter:'evento_funcion'
+      usuario:+localStorage.getItem('currentId'),
+      banda:this.SelectedData.social.id,
+      votos:[
+        this.cancion1,
+        this.cancion2,
+        this.cancion3
+      ]
     }
-      // this.mainService.getAllFilter(data)
-      //                     .then(response => {
-      //                       this.areasTable = response;
-      //                       this.blockUI.stop();
-      //                     }).catch(error => {
-      //                       console.clear
-      //                       this.blockUI.stop();
-      //                       this.createError(error)
-      //                     })
+      this.parentService.votar(data)
+                          .then(response => {
+                            // console.log(response);
+                            this.createSuccess("Su voto ha sido agregado")
+                            this.buscarSingle(response.id)
+                            this.blockUI.stop();
+                          }).catch(error => {
+                            console.clear
+                            this.blockUI.stop();
+                            this.createError(error)
+                          })
   }
 
   cargarFunciones(id:number){
@@ -169,7 +210,7 @@ export class CancionesComponent implements OnInit {
   };
 
   createSuccess(success) {
-    this._service.success('¡Éxito!',success)
+    this._service.info('¡Éxito!',success)
   }
   createError(error) {
     this._service.error('¡Error!',error)

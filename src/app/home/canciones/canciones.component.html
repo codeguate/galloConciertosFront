@@ -4,18 +4,21 @@
     <div class="px-5 w-100 text-center">
       <img src="./../../../assets/png/logo.png" class="w-50 img-fluid" style="max-height: 100%;" >
       <div class="form-group d-flex w-100">
-        <ng2-completer [(ngModel)]="cancion1" placeholder="Vota por" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+        <ng2-completer [(ngModel)]="cancion1" placeholder="Selecciona la cancion" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
         <!-- <input type="text" class="gallo-inputs mx-auto" id="" placeholder="Input field"> -->
       </div>
       <div class="form-group d-flex w-100">
-        <ng2-completer [(ngModel)]="cancion2" placeholder="Vota por" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+        <ng2-completer [(ngModel)]="cancion2" placeholder="Selecciona la cancion" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
         <!-- <input type="text" class="gallo-inputs mx-auto" id="" placeholder="Input field"> -->
       </div>
       <div class="form-group d-flex w-100">
-      <ng2-completer [(ngModel)]="cancion3" placeholder="Vota por" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+      <ng2-completer [(ngModel)]="cancion3" placeholder="Selecciona la cancion" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+      <!-- <ngx-select placeholder="Vota por" class="gallo-inputs mx-auto"  [items]="canciones" [(ngModel)]="cancion3"></ngx-select> -->
       <!-- <input type="text" class="gallo-inputs mx-auto" id="" placeholder="Input field"> -->
       </div>
-
+      <div class="my-2 d-flex w-100">
+        <button class="btn btn-lg btn-primary btn-block gallo-btn m-auto" id="btnVotar" [disabled]="(cancion1=='' || cancion2=='' || cancion3=='') " type="button" (click)="cargarAreas(1);">Votar</button>
+    </div>
     </div>
 
 
@@ -24,7 +27,7 @@
   </div>
 
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 d-flex">
-      <img src="{{SelectedData.foto1}}" style="width:80%;max-height: 80%;" class="img-fluid mx-auto">
+      <img src="{{SelectedData.foto1}}" style="width:80%;max-height: 80%;" class="img-fluid ml-auto">
 
   </div>
 

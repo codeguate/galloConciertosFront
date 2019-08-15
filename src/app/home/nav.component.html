@@ -1,6 +1,10 @@
 <block-ui>
 <div class="body w-100">
   <div class="cuerpo">
+    <div class="w-100 text-right pr-3">
+        <button type="button" class="btn btn-default text-light" (click)="logout()" *ngIf="user.id">Cerrar Sesion</button>
+    </div>
+
     <router-outlet></router-outlet>
   </div>
 </div>

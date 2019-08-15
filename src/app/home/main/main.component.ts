@@ -25,13 +25,14 @@ public search: any;
 agregados: any[] = [];
 mySlideImages = [1,2,3].map((i)=> `https://picsum.photos/640/480?image=${i}`);
 myCarouselImages =[1,2,3,4,5,6].map((i)=>`https://picsum.photos/640/480?image=${i}`);
-mySlideOptions={items: 3, dots: false, nav: true,loop:true,autoplay:false,autoplayTimeout:3000,autoplayHoverPause:true};
+mySlideOptions={items: 3, dots: false, nav: true,loop:true,autoplay:false,autoplayTimeout:3000,autoplayHoverPause:true,autoWidth:true};
 myCarouselOptions={items: 3, dots: true, nav: true};
 selectedData: any;
 @BlockUI() blockUI: NgBlockUI;
 browserLang:any = this.parentComponent.browserLang;
 Id:any = '';
 slides:any
+foreignId:number = 0
 //Servicio el cual se va a trabajar
 constructor(
   private parentComponent: NavComponent,
@@ -64,7 +65,14 @@ ngOnInit() {
   })
 }
 navegar(url:string,id?:number){
-  this.router.navigate([url])
+  if(+localStorage.getItem('currentId')>0){
+
+    this.router.navigate([url])
+  }else{
+    this.foreignId = id
+    this.mostrar('login');
+    $("#loginModal").modal('show');
+  }
   if(id && id>0){
     localStorage.setItem('idCategory',id+'');
   }
@@ -77,9 +85,9 @@ navegar(url:string,id?:number){
       let yyyy = today.getFullYear();
       let stoday = yyyy + '-' + mm + '-' + dd;
       let data = {
-        id:stoday,
+        id:1,
         state:'0',
-        filter:'proximos-principales'
+        filter:'evento'
       }
       this.BandasService.getAll()
                           .then(response => {
@@ -199,6 +207,19 @@ navegar(url:string,id?:number){
       clickToClose: true,
       maxLength: 200
   };
+
+  mostrar(id){
+    if(!$("#registroBody").hasClass('d-none')){
+      $("#registroBody").addClass('d-none');
+    }
+    if(!$("#recoveryBody").hasClass('d-none')){
+      $("#recoveryBody").addClass('d-none');
+    }
+    if(!$("#loginBody").hasClass('d-none')){
+      $("#loginBody").addClass('d-none');
+    }
+    $("#"+id+"Body").removeClass('d-none');
+  }
 
   create(success) {
         this._service.success('¡Éxito!', success);

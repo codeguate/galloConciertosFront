@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   auth:any
   type:any = 'Promotor';
   @Input() public isModal: boolean;
+  @Input() public foreignId: number;
   @Input() public idBis: string;
   @BlockUI() blockUI: NgBlockUI;
   constructor(
@@ -75,16 +76,14 @@ createError(error) {
             setTimeout(element=>{
               $("#rouded-profile").attr("src",response.foto?response.foto:localStorage.getItem('currentAvatar'));
             },500);
-            console.clear
 
                 this.blockUI.stop();
-                console.log(response);
+                // console.log(response);
+                $("#loginModal").modal('hide');
 
-                if(response.rol!=3){
-                  this.router.navigate([`./dashboard/home`])
-                }else{
-                  this.router.navigate([`./dashboard/profile`])
-                }
+                setTimeout(() => {
+                  this.router.navigate([`./votar/${this.foreignId}`])
+                }, 200);
                 this.blockUI.stop();
                 this.nav.fullSession(true)
           }else{
@@ -120,7 +119,19 @@ createError(error) {
     $('#searchContent').addClass('d-none');
     $('#inSeachForm').removeClass('d-none');
     $('#logoTipo').addClass('d-none');
-    this.getParams()
+    // this.getParams()
+  }
+  mostrar(id){
+    if(!$("#registroBody").hasClass('d-none')){
+      $("#registroBody").addClass('d-none');
+    }
+    if(!$("#recoveryBody").hasClass('d-none')){
+      $("#recoveryBody").addClass('d-none');
+    }
+    if(!$("#loginBody").hasClass('d-none')){
+      $("#loginBody").addClass('d-none');
+    }
+    $("#"+id+"Body").removeClass('d-none');
   }
 
 }
