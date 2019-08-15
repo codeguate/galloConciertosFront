@@ -9,6 +9,7 @@ html,
   height: 100% !important;
   font-size: 1rem;
   text-align: left;
+  background-attachment: fixed;
   background-image: url(./assets/png/fondo.png) !important;
   background-position: center;
   background-repeat: no-repeat;
@@ -58,6 +59,7 @@ html, body {
   height: 100% !important;
   font-size: 1rem;
   text-align: left;
+  background-attachment: fixed;
   background-image: url(./assets/png/fondo-canciones.png) !important;
   background-position: center;
   background-repeat: no-repeat;
