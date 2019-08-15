@@ -102,4 +102,17 @@ export class RecoveryComponent implements OnInit {
         this._service.error('¡Error!',error)
 
   }
+
+  mostrar(id){
+    if(!$("#registroBody").hasClass('d-none')){
+      $("#registroBody").addClass('d-none');
+    }
+    if(!$("#recoveryBody").hasClass('d-none')){
+      $("#recoveryBody").addClass('d-none');
+    }
+    if(!$("#loginBody").hasClass('d-none')){
+      $("#loginBody").addClass('d-none');
+    }
+    $("#"+id+"Body").removeClass('d-none');
+  }
 }

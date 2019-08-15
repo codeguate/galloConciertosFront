@@ -1,0 +1,29 @@
+.gallo-inputs{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
+  background-color: rgba(0,0,0,0);
+  border: 0;
+  background-image: url(./../../../assets/png/boton.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 110%;
+  color: #ffffff;
+}
+.gallo-inputs::placeholder{
+  color: #ffffff;
+}
+.gallo-btn{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
+  background-color: rgba(0,0,0,0);
+  border: 0;
+  background-image: url(./../../../assets/png/boton.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  color: #ffffff;
+}

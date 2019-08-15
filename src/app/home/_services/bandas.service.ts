@@ -52,7 +52,7 @@ return Promise.reject(error.message || error)
 
     getAllFilter(data):Promise<any> {
     let filter = data.filter?"?filter="+data.filter:"";
-    let url = `${this.basePath}/api/filter/${data.id}/bandas/${data.state}${filter}`
+    let url = `${this.basePath}/api/filter/${data.id}/bandaseventos/${data.state}${filter}`
       return this.http.get(url)
                       .toPromise()
                         .then(response => {
@@ -73,6 +73,17 @@ return Promise.reject(error.message || error)
                         })
                         .catch(this.handleError)
     }
+
+    votar(form):Promise<any> {
+      let url = `${this.basePath}/api/votar`
+        return this.http.post(url,form)
+                        .toPromise()
+                          .then(response => {
+                            //console.log(response)
+                            return response
+                          })
+                          .catch(this.handleError)
+      }
 
     delete(id):Promise<any> {
     let url = `${this.basePath}/api/bandas/${id}`
@@ -97,7 +108,7 @@ return Promise.reject(error.message || error)
     }
 
     getSingle(id:number):Promise<any> {
-    let url = `${this.basePath}/api/bandas/${id}`
+    let url = `${this.basePath}/api/bandaseventos/${id}`
       return this.http.get(url)
                       .toPromise()
                         .then(response => {

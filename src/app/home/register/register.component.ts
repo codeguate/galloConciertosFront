@@ -1,8 +1,9 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, Input } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
 import { NotificationsService } from 'angular2-notifications';
 import { UsersService } from "../_services/users.service";
+import { NavComponent } from "../nav.component";
 import { AuthService } from "../_services/auth.service";
 declare let $: any
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
@@ -22,6 +23,7 @@ export class RegisterComponent implements OnInit {
   DPI:string = ""
   numeroTelefono:string = ""
   @BlockUI() blockUI: NgBlockUI;
+  @Input() foreignId:number
   selectedData:any
   today:any
   nacimientoToday:any
@@ -32,6 +34,7 @@ export class RegisterComponent implements OnInit {
       private router: Router,
       private AuthService: AuthService,
       private mainService: UsersService,
+      private nav:NavComponent
     ) { }
 
   ngOnInit() {
@@ -45,6 +48,10 @@ export class RegisterComponent implements OnInit {
     let yyyy = today.getFullYear()-21;
     this.today = yyyy + '-' + mm + '-' + dd;
     this.nacimientoToday = yyyy + '-' + mm + '-' + dd;
+    $(document).ready(function () {
+      console.log();
+
+    });
   }
 
   select(dat:boolean){
@@ -105,39 +112,52 @@ export class RegisterComponent implements OnInit {
   insert(formValue:any){
 
     this.blockUI.start();
-    formValue.telefono2=formValue.telefono
-    formValue.telefono=formValue.telefono.substring(1,formValue.telefono.length).replace(/ /g, '').replace(/-/g, '')
+    formValue.dpi =  formValue.dpi.replace(/ /g, '').replace(/-/g, '')
     formValue.password =  formValue.email.split('@')[0]
     formValue.username =  formValue.email.split('@')[0]
-    let string = formValue.dpi+formValue.telefono+":"+formValue.username;
+    let string = formValue.dpi.replace(/ /g, '').replace(/-/g, '')+formValue.telefono+":"+formValue.username;
     let encodedString = btoa(string);
     formValue.codigo =  encodedString.substr(encodedString.length-20,encodedString.length);
     // console.log(formValue);
+    if(formValue.edad>=18){
 
     this.mainService.create(formValue)
                       .then(async response => {
-                        console.log(response);
+                        if(response.id){
+                          localStorage.setItem('currentUser', response.username);
+                          localStorage.setItem('currentEmail', response.email);
+                          localStorage.setItem('currentId', response.id);
+                          localStorage.setItem('currentPicture', response.foto);
+                          localStorage.setItem('currentState', response.state);
+                          localStorage.setItem('currentEmail', response.email);
+                          localStorage.setItem('currentApellidos', response.apellidos);
+                          localStorage.setItem('currentNombres', response.nombres);
+                          localStorage.setItem('currentAvatar', response.foto);
+                          localStorage.setItem('currentRol', response.rol);
+                              this.nav.fullSession(true)
+                              this.blockUI.stop();
                         // this.cargarAll()
-                        $("#generalModalDetalle").modal('hide');
-                        this.blockUI.stop();
-                        this.DPI = ''
-                        this.numeroTelefono=''
-                        $("#nombres").val('')
-                        $("#apellidos").val('')
-                        $("#email").val('')
-                        this.enviarData=false;
-                        this.createSuccess('Su solicitud se envio con exito')
-                        // location.reload();
-                        console.clear
+
+                          $("#loginModal").modal('hide');
+                          this.createSuccess('Su Registro se envio con exito')
+                          setTimeout(() => {
+                            this.router.navigate(["./votar/"+this.foreignId])
+                          }, 200);
+                          // location.reload();
+                        }
+                        console.log(this.foreignId);
+
 
                       }).catch(error => {
                         console.clear
-                        console.log(error);
-
                         this.blockUI.stop();
                         this.createError(error)
                       })
 
+                    }else{
+                        this.blockUI.stop();
+                        this.createError('Debes ser mayor de edad para registrarte')
+                    }
 
   }
   delete(id:string){
@@ -362,5 +382,18 @@ export class RegisterComponent implements OnInit {
     createError(error) {
                 this._service.error('¡Error!',error)
 
+    }
+
+    mostrar(id){
+      if(!$("#registroBody").hasClass('d-none')){
+        $("#registroBody").addClass('d-none');
+      }
+      if(!$("#recoveryBody").hasClass('d-none')){
+        $("#recoveryBody").addClass('d-none');
+      }
+      if(!$("#loginBody").hasClass('d-none')){
+        $("#loginBody").addClass('d-none');
+      }
+      $("#"+id+"Body").removeClass('d-none');
     }
 }

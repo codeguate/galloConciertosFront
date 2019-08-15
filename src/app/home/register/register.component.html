@@ -7,23 +7,31 @@
             <h1 class="h3 text-dark mb-3 mt-3 font-weight-bold">Formulario de Aplicacion</h1>
               <div class="row">
                 <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <input type="text" name="nombres" id="nombres" ngModel #nombres="ngModel" class="form-control" placeholder="Nombre" required="required" title="Nombre">
+                  <input type="text" name="nombres" id="nombres" ngModel #nombres="ngModel" class="form-control gallo-inputs" placeholder="Nombre" required="required" title="Nombre">
                 </div>
                 <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <input type="text" name="apellidos" id="apellidos" ngModel #apellidos="ngModel" class="form-control" placeholder="Apellido" required="required" title="Apellido">
-                </div>
-                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                  <input type="text" name="telefono" id="telefono" ngModel #telefono="ngModel" class="form-control" placeholder="Telefono" required="required" title="Telefono" (keyup)="calidarTele($event)" [(ngModel)]="numeroTelefono">
-                </div>
-                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                  <input type="text" name="dpi" id="dpi" ngModel #dpi="ngModel" class="form-control " placeholder="DPI" required="required" title="DPI" (keyup)="cuiIsValid($event)" [(ngModel)]="DPI">
+                  <input type="text" name="dpi" id="dpi" ngModel #dpi="ngModel" class="form-control gallo-inputs" placeholder="DPI" required="required" title="DPI" (keyup)="cuiIsValid($event)" [(ngModel)]="DPI">
                 </div>
                 <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <input type="email" name="email" id="email" ngModel #email="ngModel" [email]="true" [ngClass]="{'border border-danger': ((email.dirty || email.touched) && email.invalid ),'border border-success': ((email.dirty || email.touched) && !email.invalid )}" class="form-control" placeholder="Correo Electronico" required="required" title="Correo Electronico">
+                  <input type="email" name="email" id="email" ngModel #email="ngModel" [email]="true" [ngClass]="{'border border-danger': ((email.dirty || email.touched) && email.invalid ),'border border-success': ((email.dirty || email.touched) && !email.invalid )}" class="form-control gallo-inputs" placeholder="Correo Electronico" required="required" title="Correo Electronico">
                 </div>
+                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                  <input type="number" name="edad" id="edad" ngModel #edad="ngModel" class="form-control gallo-inputs" placeholder="Edad" [ngClass]="{'border border-danger': edad.value<18,'border border-success': edad.value>=18}" required="required" title="Edad" min="18" max="100">
+                </div>
+                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                  <input type="text" name="genero" id="genero" ngModel #genero="ngModel" class="form-control gallo-inputs " placeholder="Genero" required="required" title="Genero" >
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-3 row mt-3 text-light">
+                    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 offset-xs-1 offset-sm-1 offset-md-1 offset-lg-1 text-left">
+                        <a class="c-celeste-bishound" (click)="mostrar('login')">Entrar</a>
+                    </div>
+                    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-right">
+                        <a class="c-celeste-bishound" (click)="mostrar('recovery')">Recupera tu Contraseña</a>
+                      </div>
+                  </div>
 
                 <div class="my-2 col-xs-12 col-sm-8 col-md-6 col-lg-4  offset-sm-2 offset-md-3 offset-lg-4">
-                    <button class="btn btn-lg btn-primary btn-block" [disabled]="!enviarData" type="submit">Enviar</button>
+                    <button class="btn btn-lg btn-primary btn-block gallo-btn" [disabled]="!enviarData" type="submit">Registrar</button>
                 </div>
 
             </div>
@@ -35,3 +43,4 @@
   </div>
 
 
+  <simple-notifications [options]="options"></simple-notifications>
