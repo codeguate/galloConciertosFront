@@ -58,8 +58,44 @@ html, body {
   height: 100% !important;
   font-size: 1rem;
   text-align: left;
-  background-image: url(./assets/png/fondo-interno.png) !important;
+  background-image: url(./assets/png/fondo-canciones.png) !important;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
+}
+.body-interno-new{
+  width: 100% !important;
+  height: 100% !important;
+  font-size: 1rem;
+  text-align: left;
+  background-image: url(./assets/png/background-login.png) !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.img_banda{
+  flex: 0 0 58.33% !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+@media only screen and (max-width: 1000px){
+  .body-interno{
+    background-position: right;
+    background-size: cover;
+  }
+  .img_banda {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-right: 0 !important;
+  }
+  .img_banda img{
+    width: 345px !important;
+  }
+  .row{
+    margin: 0 !important;
+  }
+  .body-interno{
+    height: inherit !important;
+  }
 }
