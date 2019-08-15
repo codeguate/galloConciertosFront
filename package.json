@@ -46,6 +46,7 @@
     "ngx-bootstrap": "^5.1.0",
     "ngx-owl-carousel": "^2.0.7",
     "ngx-owl-carousel-o": "^1.1.6",
+    "ngx-select-ex": "^3.7.2",
     "nouislider": "^13.1.4",
     "owl.carousel": "^2.3.4",
     "popper.js": "^1.15.0",
