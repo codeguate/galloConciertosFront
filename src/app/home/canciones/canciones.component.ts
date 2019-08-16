@@ -32,6 +32,8 @@ export class CancionesComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
   protected cancion1: string = '';
   protected cancion2: string = '';
+  openOnClick:boolean = true;
+  openOnClick2:boolean = false;
   protected cancion3: string = '';
   protected canciones: any =[];
   protected captain: string;
@@ -121,6 +123,8 @@ export class CancionesComponent implements OnInit {
 
                                   if(!$(".gallo-inputs").children("div").children("input").attr('readOnly'))
                                   {
+                                    this.openOnClick2=true;
+
                                     $(".gallo-inputs").children("div").children("input").attr('readOnly',true)
                                   }
                                 }, 200);
@@ -135,6 +139,7 @@ export class CancionesComponent implements OnInit {
                                 }
                               }
                             });
+
                             this.blockUI.stop();
                           }).catch(error => {
                             console.clear

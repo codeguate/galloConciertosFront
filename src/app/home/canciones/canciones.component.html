@@ -1,19 +1,19 @@
 
 <div class="row" *ngIf="SelectedData">
-    
+
   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 offset-xs-1 offset-sm-1 offset-md-1 offset-lg-1 ">
     <div class="px-5 w-100 text-center form">
       <img src="./../../../assets/png/logo.png" class="w-50 img-fluid" style="max-height: 100%;" >
       <div class="form-group d-flex w-100">
-        <ng2-completer openOnFocus="true" [(ngModel)]="cancion1" placeholder="Selecciona la cancion" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+        <ng2-completer [disableInput]="openOnClick2" [selectOnClick]="openOnClick" [autoMatch]="true" [clearUnselected]="openOnClick"  [openOnFocus]="openOnClick" [(ngModel)]="cancion1" placeholder="Selecciona la cancion" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
         <!-- <input type="text" class="gallo-inputs mx-auto" id="" placeholder="Input field"> -->
       </div>
       <div class="form-group d-flex w-100">
-        <ng2-completer openOnFocus="true" [(ngModel)]="cancion2" placeholder="Selecciona la cancion" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+        <ng2-completer [disableInput]="openOnClick2" [selectOnClick]="openOnClick" [autoMatch]="true" [clearUnselected]="openOnClick"  [openOnFocus]="openOnClick" [(ngModel)]="cancion2" placeholder="Selecciona la cancion" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
         <!-- <input type="text" class="gallo-inputs mx-auto" id="" placeholder="Input field"> -->
       </div>
       <div class="form-group d-flex w-100">
-      <ng2-completer openOnFocus="true" [(ngModel)]="cancion3" placeholder="Selecciona la cancion" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+      <ng2-completer [disableInput]="openOnClick2" [selectOnClick]="openOnClick" [autoMatch]="true" [clearUnselected]="openOnClick"  [openOnFocus]="openOnClick" [(ngModel)]="cancion3" placeholder="Selecciona la cancion" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
       <!-- <ngx-select placeholder="Vota por" class="gallo-inputs mx-auto"  [items]="canciones" [(ngModel)]="cancion3"></ngx-select> -->
       </div>
       <div class="my-2 d-flex w-100">
