@@ -59,8 +59,7 @@ constructor(private http:HttpClient){
                           return response;
                         })
                         .catch(error => {
-                          console.log(error);
-
+                          return Promise.reject(error || error)
                         })
     }
 

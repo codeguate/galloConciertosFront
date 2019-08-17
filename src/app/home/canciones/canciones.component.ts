@@ -148,6 +148,24 @@ export class CancionesComponent implements OnInit {
                           })
   }
 
+  eliminar(cancion,id?){
+    console.log(this.SelectedData.canciones);
+
+    this.SelectedData.canciones.splice(this.SelectedData.canciones.findIndex(dat => {
+      return dat.titulo == cancion
+    }), 1)
+    setTimeout(() => {
+    $("#cancionInput"+id).attr('readOnly',true)
+    $("#cancionInput"+id).attr('disabled',true)
+
+    }, 500);
+
+    console.log($("#cancionInput"+id));
+    this.dataService = null;
+    this.dataService = this.completerService.local(this.SelectedData.canciones, 'titulo', 'titulo');
+
+  }
+
   cargarAreas(id:number){
     this.blockUI.start();
     let data = {

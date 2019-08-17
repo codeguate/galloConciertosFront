@@ -31,6 +31,7 @@ import { RegisterComponent } from './register/register.component';
 import { MainComponent } from './main/main.component';
 import { EventoComponent } from './evento/evento.component';
 import { CancionesComponent } from './canciones/canciones.component';
+import { HomeComponent } from './home/home.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -67,6 +68,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainComponent,
     EventoComponent,
     CancionesComponent,
+    HomeComponent,
   ],
   providers: [
     AuthService,

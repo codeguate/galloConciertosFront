@@ -101,11 +101,13 @@ navegar(url:string,id?:number){
                               $(".owl-next").css('margin-top', '2%');
                               $(".owl-next").css('position', 'absolute');
                               $(".owl-next").css('z-index', '100');
+                              $(".owl-next").css('color', '#ffffff');
 
                               $(".owl-prev").css("font-size", '4rem');
                               $(".owl-prev").css('right', '60%');
                               $(".owl-prev").css('margin-top', '2%');
                               $(".owl-prev").css('position', 'absolute');
+                              $(".owl-prev").css('color', '#ffffff');
                               $(".owl-prev").css('z-index', '100');
 
 

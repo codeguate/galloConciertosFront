@@ -86,8 +86,13 @@ html, body {
 }
 @media only screen and (max-width: 1000px){
   .body-interno{
-    background-position: right;
+  background-image: url(./assets/png/fondo-mobile.png) !important;
+  background-position: right;
     background-size: cover;
+  }
+  .body{
+  background-image: url(./assets/png/fondo-mobile.png) !important;
+
   }
   .img_banda {
     flex: 0 0 100% !important;

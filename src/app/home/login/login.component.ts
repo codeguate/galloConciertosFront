@@ -82,7 +82,7 @@ createError(error) {
                 $("#loginModal").modal('hide');
 
                 setTimeout(() => {
-                  this.router.navigate([`./votar/${this.foreignId}`])
+                  this.router.navigate([`./bandas`])
                 }, 200);
                 this.blockUI.stop();
                 this.nav.fullSession(true)

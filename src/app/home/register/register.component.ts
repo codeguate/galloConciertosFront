@@ -148,7 +148,7 @@ export class RegisterComponent implements OnInit {
                           $("#loginModal").modal('hide');
                           this.createSuccess('Su Registro se envio con exito')
                           setTimeout(() => {
-                            this.router.navigate(["./votar/"+this.foreignId])
+                            this.router.navigate(["./bandas"])
                           }, 200);
                           // location.reload();
                         }
@@ -158,7 +158,14 @@ export class RegisterComponent implements OnInit {
                       }).catch(error => {
                         console.clear
                         this.blockUI.stop();
+                        console.log(error);
+                        if(error.status==400){
+                          this.createError("Perdon, su correo ya ha sido registrado")
+
+                        }else{
                         this.createError(error)
+
+                        }
                       })
 
                     }else{
@@ -383,7 +390,7 @@ export class RegisterComponent implements OnInit {
           };
 
     createSuccess(success) {
-                this._service.success('¡Éxito!',success)
+                this._service.info('¡Éxito!',success)
 
     }
     createError(error) {

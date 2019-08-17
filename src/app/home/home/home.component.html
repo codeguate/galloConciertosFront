@@ -1,0 +1,43 @@
+
+<div class="w-100 h-50 d-flex">
+
+  <div class="w-50 m-auto ">
+      <img src="./../../../assets/png/logo.png" class="img-fluid" style="max-height: 100%;">
+
+  </div>
+</div>
+
+  <div class="w-100 h-25 row">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 offset-xs-4 offset-sm-4 offset-md-4 offset-lg-4 mt-3 mb-5">
+      <button class="btn btn-lg btn-default btn-block gallo-btn-facebook img-fluid mx-auto" type="button"></button>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 offset-xs-2 offset-sm-2 offset-md-2 offset-lg-2  pb-3 ">
+      <button class="btn btn-lg btn-default btn-block gallo-btn-ingresar" type="button" (click)="mostrar('login',true);"></button>
+    </div>
+
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 pb-3">
+        <button class="btn btn-lg btn-default btn-block gallo-btn-registrate" type="button" (click)="mostrar('registro',true);"></button>
+
+      </div>
+
+       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 py-5">
+         <img src="./../../../assets/png/registrate-para-votar.png" class="img-fluid">
+    </div>
+</div>
+
+<simple-notifications [options]="options"></simple-notifications>
+<div class="modal fade " id="loginModal">
+  <div class="modal-dialog  modal-lg">
+    <div class="modal-content" *ngIf="foreignId">
+        <div class="modal-body body-interno-new  d-none" id="loginBody">
+            <app-login foreignId="{{foreignId}}"></app-login>
+        </div>
+        <div class="modal-body body-interno-new d-none" id="recoveryBody">
+            <app-recovery></app-recovery>
+        </div>
+        <div class="modal-body body-interno-new  d-none" id="registroBody">
+            <app-register foreignId="{{foreignId}}"></app-register>
+        </div>
+    </div>
+  </div>
+</div>

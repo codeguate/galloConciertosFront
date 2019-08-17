@@ -7,13 +7,15 @@ import { RegisterComponent } from './register/register.component';
 import { MainComponent } from './main/main.component';
 import { EventoComponent } from './evento/evento.component';
 import { CancionesComponent } from './canciones/canciones.component';
+import { HomeComponent } from './home/home.component';
 
 import { HomeGuard } from "./_guards/home.guard";
 import { AuthGuard } from "./_guards/auth.guard";
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: MainComponent},
+  { path: 'bandas', component: MainComponent, canActivate: [AuthGuard]},
+  { path: 'home', component: HomeComponent, canActivate: [HomeGuard]},
   { path: 'votar/:id', component: CancionesComponent, canActivate: [AuthGuard] },
   { path: 'evento/:id/:fecha', component: EventoComponent},
   { path: 'login', component: LoginComponent, canActivate: [HomeGuard] },
