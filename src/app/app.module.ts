@@ -4,6 +4,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { FacebookModule } from 'ngx-facebook';
 
 import { AppRoutingModule } from './app.routing';
 import { LoadersCssModule } from 'angular2-loaders-css';
@@ -34,6 +35,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FormsModule,
     BlockUIModule.forRoot(),
     HttpClientModule,
+    FacebookModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

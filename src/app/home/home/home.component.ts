@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { FacebookService, InitParams, LoginResponse } from 'ngx-facebook';
 
 import { NavComponent } from "./../nav.component";
 import { NotificationsService } from 'angular2-notifications';
@@ -42,9 +43,20 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private BandasService:BandasService,
     private app: AppComponent,
+    private fb: FacebookService,
     public translate: TranslateService,
     private nav:NavComponent
-    ) { }
+    ) {
+      let initParams: InitParams = {
+        appId: '402288300635480',
+        status     : true,
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v2.1'
+      };
+
+      fb.init(initParams);
+     }
 
   //Llamar los metodos que se van a utilizar
   ngOnInit() {
@@ -64,6 +76,13 @@ export class HomeComponent implements OnInit {
         this.cargarSlides();
 
       })
+  }
+  loginWithFacebook(): void {
+
+    this.fb.login()
+      .then((response: LoginResponse) => console.log(response))
+      .catch((error: any) => console.error(error));
+
   }
   navegar(url:string,id?:number){
     this.blockUI.start()
