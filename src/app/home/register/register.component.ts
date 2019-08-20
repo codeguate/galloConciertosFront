@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
     this.today = yyyy + '-' + mm + '-' + dd;
     this.nacimientoToday = yyyy + '-' + mm + '-' + dd;
     $(document).ready(function () {
-      console.log();
+      // console.log();
 
     });
   }
@@ -140,7 +140,7 @@ export class RegisterComponent implements OnInit {
     let encodedString = btoa(string);
     formValue.codigo =  encodedString.substr(encodedString.length-20,encodedString.length);
     formValue.facebook_id = formValue.idHidden;
-    // console.log(formValue);
+    console.log(formValue);
     if(formValue.edad>=18){
 
     this.mainService.create(formValue)
@@ -167,7 +167,7 @@ export class RegisterComponent implements OnInit {
                           }, 200);
                           // location.reload();
                         }
-                        console.log(this.foreignId);
+                        // console.log(this.foreignId);
 
 
                       }).catch(error => {
@@ -244,7 +244,7 @@ export class RegisterComponent implements OnInit {
         return false;
       }
       if (!cui) {
-          console.log("CUI vacío");
+          // console.log("CUI vacío");
           this.DPI = this.formatearDPI(cui);
 
           return true;

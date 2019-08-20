@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   ) { }
   getParams(){
     this.type = this.route.snapshot.paramMap.get("type");
-    console.log(this.type);
+    // console.log(this.type);
 
   }
   public options = {

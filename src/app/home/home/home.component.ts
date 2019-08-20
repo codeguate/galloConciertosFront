@@ -98,8 +98,11 @@ export class HomeComponent implements OnInit {
               $("#nombres").val(response.first_name+" "+response.last_name);
               $("#email").val(response.email?response.email:'');
               $("#idHidden").val(response.id?response.id:'');
+              $("#email").focus();
+              $("#idHidden").focus();
+              $("#nombres").focus();
               $(".gallo-btn-registrate").click()
-              console.log(response);
+              // console.log(response);
 
             }).catch(error => {
               console.log(error);
@@ -116,7 +119,7 @@ export class HomeComponent implements OnInit {
     };
     this.fb.login(options)
             .then((response: LoginResponse) => {
-              console.log('Logged in', response)
+              // console.log('Logged in', response)
               if (response.status === 'connected') {
                 // Acción que se desencadena cuando el usuario está conectado
                 // a Facebook y a nuestra APP
@@ -170,7 +173,7 @@ export class HomeComponent implements OnInit {
         this.BandasService.getAllFilter(data)
                             .then(response => {
                               this.Table = response;
-                              console.log(response);
+                              // console.log(response);
                               setTimeout(() => {
                                 $(".owl-next").css("font-size", '4rem');
                                 $(".owl-next").css('margin-left', '10%');

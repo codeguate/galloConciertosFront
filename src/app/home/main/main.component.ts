@@ -119,7 +119,7 @@ navegar(url:string,id?:number){
       this.BandasService.getAllFilter(data)
                           .then(response => {
                             this.Table = response;
-                            console.log(response);
+                            // console.log(response);
                             setTimeout(() => {
                               $(".owl-next").css("font-size", '4rem');
                               $(".owl-next").css('margin-left', '10%');

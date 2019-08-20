@@ -181,6 +181,11 @@ export class CancionesComponent implements OnInit {
       this.dataSource2 = this.completerService.local(dat);
 
     }
+    else if(id==3){
+      this.dataSource3 = this.completerService.local(dat);
+      this.dataService = this.dataSource3;
+
+    }
     this.dataService = this.completerService.local(dat);
 
   }
