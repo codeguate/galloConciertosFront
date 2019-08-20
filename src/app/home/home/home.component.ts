@@ -101,12 +101,12 @@ export class HomeComponent implements OnInit {
     {"fields":"email,first_name,last_name,id,gender"})
             .then(function (response) {
 
-              $("#nombres").val(response.first_name+" "+response.last_name);
-              $("#email").val(response.email?response.email:'');
-              $("#idHidden").val(response.id?response.id:'');
-              $("#email").focus();
-              $("#idHidden").focus();
-              $("#nombres").focus();
+              $("#registroBody #nombres").val(response.first_name+" "+response.last_name);
+              $("#registroBody #email").val(response.email);
+              $("#registroBody #idHidden").val(response.id);
+              $("#registroBody #email").focus();
+              $("#registroBody #idHidden").focus();
+              $("#registroBody #nombres").focus();
               // $("#getFacebookData").click();
               $(".gallo-btn-registrate").click()
 

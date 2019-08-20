@@ -42,13 +42,13 @@
             <span aria-hidden="true">&times;</span>
           </button>
         <div class="modal-body body-interno-new  d-none" id="loginBody">
-            <app-login foreignId="{{foreignId}}"></app-login>
+            <app-login *ngIf="foreignId" foreignId="{{foreignId}}"></app-login>
         </div>
         <div class="modal-body body-interno-new d-none" id="recoveryBody">
             <app-recovery></app-recovery>
         </div>
         <div class="modal-body body-interno-new  d-none" id="registroBody">
-            <app-register foreignId="{{foreignId}}" facebook="{{facebookData}}"></app-register>
+            <app-register *ngIf="foreignId" foreignId="{{foreignId}}" facebook="{{facebookData}}"></app-register>
         </div>
     </div>
   </div>

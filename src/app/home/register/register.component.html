@@ -28,9 +28,9 @@
                   <input type="password" name="password_rep" id="password_rep" ngModel #password_rep="ngModel" class="form-control gallo-password" placeholder="Password" required="required" title="Password">
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngIf="password">
 
-                  <div class="alert text-danger" *ngIf="password.value!='' && password.value.length<8">
+                  <div class="alert text-danger" *ngIf="password && password.value!='' && (password && password.value && password.value.length<8)">
                     <strong>El password debe tener al menos 8 carácteres!</strong>
                   </div>
                   <div class="alert text-danger" *ngIf="password_rep.value!='' && password.value!=password_rep.value ">
