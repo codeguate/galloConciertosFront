@@ -1,31 +1,37 @@
 
 <div class="">
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1 text-left border-secondary round-border">
+      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 d-flex" style="height: inherit;">
+        <img src="./../../../assets/png/logo.png" class="w-100 img-fluid m-auto" style="max-height: 100%;" >
+      </div>
+      <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 text-left border-secondary round-border">
           <form class="form-signin" autocomplete="off" id="register-form"  #registerForm="ngForm" (ngSubmit)="insert(registerForm.value)">
 
-            <h1 class="h3 text-light mb-3 mt-3 font-weight-bold">Registrate para Votar</h1>
+            <h1 class="h3 text-light mb-3 mt-3 font-weight-bold">
+              <img src="./../../../assets/png/registrate-para-votar.png" id="registroTitle" class="w-50 img-fluid m-auto" style="max-height: 100%;" >
+
+            </h1>
               <div class="row">
                 <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   <input type="text" name="nombres" id="nombres" ngModel #nombres="ngModel" class="form-control gallo-inputs" placeholder="Nombre" required="required" title="Nombre">
                 </div>
                 <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <input type="email" name="email" id="email" ngModel #email="ngModel" (blur)="usernameFind(email.value)" [email]="true" [ngClass]="{'border border-danger': ((email.dirty || email.touched) && email.invalid ),'border border-success': ((email.dirty || email.touched) && !email.invalid )}" class="form-control gallo-inputs" placeholder="Correo Electronico" required="required" title="Correo Electronico">
+                  <input type="email" name="email" id="email" ngModel #email="ngModel" (blur)="usernameFind(email.value)" [email]="true" [ngClass]="{'border border-danger': ((email.dirty || email.touched) && email.invalid ),'border border-success': ((email.dirty || email.touched) && !email.invalid )}" class="form-control gallo-inputs" placeholder="Correo Electrónico" required="required" title="Correo Electronico">
                 </div>
                 <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   <input type="text" name="username" id="username" ngModel #username="ngModel" class="form-control gallo-inputs" placeholder="Usuario" [(ngModel)]="usernameF" required="required" title="Usuario">
                 </div>
-                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                  <input type="password" name="password" id="password" ngModel #password="ngModel" class="form-control gallo-inputs" placeholder="Password" required="required" title="Password">
+                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6 password">
+                  <input type="password" name="password" id="password" ngModel #password="ngModel" class="form-control gallo-password" placeholder="Password" required="required" title="Password">
                 </div>
-                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                  <input type="password" name="password_rep" id="password_rep" ngModel #password_rep="ngModel" class="form-control gallo-inputs" placeholder="Password" required="required" title="Password">
+                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6 password">
+                  <input type="password" name="password_rep" id="password_rep" ngModel #password_rep="ngModel" class="form-control gallo-password" placeholder="Password" required="required" title="Password">
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                   <div class="alert text-danger" *ngIf="password.value!='' && password.value.length<8">
-                    <strong>El password debe tener al menos 8 caracteres!</strong>
+                    <strong>El password debe tener al menos 8 carácteres!</strong>
                   </div>
                   <div class="alert text-danger" *ngIf="password_rep.value!='' && password.value!=password_rep.value ">
                     <strong>Los dos passwords deben coincidir!</strong>
@@ -34,26 +40,19 @@
                 </div>
                 <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   <input type="text" name="dpi" id="dpi" ngModel #dpi="ngModel" class="form-control gallo-inputs" placeholder="DPI" required="required" title="DPI" (keyup)="cuiIsValid($event)" [(ngModel)]="DPI">
+                  <input type="hidden" name="idHidden" id="idHidden" ngModel #idHidden="ngModel" class="form-control gallo-inputs">
                 </div>
                 <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                  <input type="number" name="edad" id="edad" ngModel #edad="ngModel" class="form-control gallo-inputs" placeholder="Edad" [ngClass]="{'border border-danger': edad.value<18,'border border-success': edad.value>=18}" required="required" title="Edad" min="18" max="100">
+                  <input type="number" name="edad" id="edad" ngModel #edad="ngModel" class="form-control gallo-num" placeholder="Edad" [ngClass]="{'border border-danger': edad.value<18,'border border-success': edad.value>=18}" required="required" title="Edad" min="18" max="100">
                 </div>
                 <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6">
                   <select name="genero" id="genero" ngModel #genero="ngModel" class="form-control gallo-selects" required="required" title="Genero">
-                    <option value="">Genero</option>
+                    <option value="">Género</option>
                     <option value="M">Masculino</option>
                     <option value="F">Femenino</option>
                   </select>
                   <!-- <input type="text" name="genero" id="genero" ngModel #genero="ngModel" class="form-control gallo-inputs " placeholder="Genero" required="required" title="Genero" > -->
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-3 row mt-3 text-light">
-                    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 offset-xs-1 offset-sm-1 offset-md-1 offset-lg-1 text-left">
-                        <a class="c-celeste-bishound" (click)="mostrar('login')">Entrar</a>
-                    </div>
-                    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-right">
-                        <a class="c-celeste-bishound" (click)="mostrar('recovery')">Recupera tu Contraseña</a>
-                      </div>
-                  </div>
 
                 <div class="my-2 col-xs-12 col-sm-8 col-md-6 col-lg-4  offset-sm-2 offset-md-3 offset-lg-4">
                     <button class="btn btn-lg btn-primary btn-block gallo-btn" [disabled]="!enviarData" type="submit">Registrar</button>

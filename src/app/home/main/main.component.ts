@@ -25,7 +25,32 @@ public search: any;
 agregados: any[] = [];
 mySlideImages = [1,2,3].map((i)=> `https://picsum.photos/640/480?image=${i}`);
 myCarouselImages =[1,2,3,4,5,6].map((i)=>`https://picsum.photos/640/480?image=${i}`);
-mySlideOptions={items: 3, dots: false, center:true,nav: true,loop:true,autoplay:true,autoplayTimeout:3000,autoplayHoverPause:true,autoWidth:true};
+mySlideOptions={margin:10,
+  dots: false,
+  center: true,
+  items:7,
+  nav: true,
+  loop:true,
+  autoplay:true,
+  autoplayTimeout:3000,
+  autoplayHoverPause:true,
+  autoWidth:true,
+  responsiveClass:true,
+  responsive:{
+      0:{
+          items:3,
+          nav:false
+      },
+      600:{
+          items:5,
+          nav:false
+      },
+      1000:{
+          items:7,
+          nav:false,
+          loop:true
+      }
+  }};
 myCarouselOptions={items: 3, dots: true, nav: true};
 selectedData: any;
 @BlockUI() blockUI: NgBlockUI;

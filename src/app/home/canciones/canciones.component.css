@@ -41,8 +41,8 @@
   width: 50%;
 }
 .title-banda{
-  width: 50% !important;
-  margin-left: 50% !important;
+  width: 40% !important;
+  margin-left: 60% !important;
   text-align: center !important;
   font-weight: bold;
   font-size: 2em;
@@ -66,7 +66,19 @@
 .content-footer{
   margin-top: 10px;
 }
+.contan{
+  width: auto;
+  height:100vh;
+}
+
+.spotyfy{
+  width: 10vw;
+}
 @media only screen and (max-width: 1000px){
+  .contan{
+    width: 100%;
+    height:auto;
+  }
   .py-3{
     border-radius: 15px 15px 0px 0px !important;
     margin-top: 15px !important;
@@ -82,7 +94,8 @@
     margin: 0 !important;
   }
   .spotyfy{
-    width: 158px !important; 
+    width: 50%;
+    margin-bottom: 2%;
   }
   .albunes{
     border-radius: 0 !important;

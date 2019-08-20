@@ -75,3 +75,34 @@
 .logout:hover{
   box-shadow: #ffffff -11px 10px 100px;
 }
+
+.gallo-btn-logout{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
+  height: 31px;
+  width: 40%;
+  background-color: rgba(0,0,0,0);
+  border: 0;
+  background-image: url(./../../assets/png/logout.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 100%;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 301;
+}
+
+.logout-btn{
+  position: absolute;
+  z-index: 300;
+}
+
+@media only screen and (min-width: 1000px) {
+  .gallo-btn-logout{
+    width: 15%!important;
+
+  }
+
+}

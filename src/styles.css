@@ -6,7 +6,7 @@
 html,
 .body {
   width: 100% !important;
-  height: 100% !important;
+  height: auto !important;
   font-size: 1rem;
   text-align: left;
   background-attachment: fixed;
@@ -86,11 +86,15 @@ html, body {
 }
 @media only screen and (max-width: 1000px){
   .body-interno{
-  background-image: url(./assets/png/fondo-mobile.png) !important;
-  background-position: right;
-    background-size: cover;
+    background-image: url(./assets/png/fondo-mobile.png) !important;
+    background-position: right;
+      background-size: cover;
+    }
+  .body-interno-new{
+    background-image: url(./assets/png/background-login-mb.png) !important;
   }
-  .body{
+
+  .body,body{
   background-image: url(./assets/png/fondo-mobile.png) !important;
 
   }
@@ -98,11 +102,11 @@ html, body {
     flex: 0 0 100% !important;
     max-width: 100% !important;
     width: 100% !important;
-    height: 50vh;
+    height: 100vh;
     padding-right: 0 !important;
   }
   .img_banda img{
-    width: 345px !important;
+    width: 50% !important;
   }
   .row{
     margin: 0 !important;

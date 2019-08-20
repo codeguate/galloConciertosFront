@@ -117,8 +117,8 @@ export class CancionesComponent implements OnInit {
                                 // console.log($(".gallo-inputs"));
 
                                 setTimeout(() => {
-                                  if(!$("#btnVotar").hasClass('d-none')){
-                                    $("#btnVotar").addClass('d-none')
+                                  if(!$("#btnVotar").attr('disabled')){
+                                    $("#btnVotar").attr('disabled','true')
                                   }
 
                                   if(!$(".gallo-inputs").children("div").children("input").attr('readOnly'))
@@ -147,7 +147,12 @@ export class CancionesComponent implements OnInit {
                             this.createError(error)
                           })
   }
-
+  reactivar(id){
+    if(this.cancion1=="" || this.cancion2=="" || this.cancion3==""){
+      $("#cancionInput"+id).attr('readOnly',false)
+      $("#cancionInput"+id).attr('disabled',false)
+    }
+  }
   eliminar(cancion,id?){
     console.log(this.SelectedData.canciones);
 

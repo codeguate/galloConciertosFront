@@ -2,6 +2,8 @@
 <div class="container">
     <div class="row">
       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 offset-xs-3 offset-sm-3 offset-md-3 offset-lg-3 text-center">
+      <img src="./../../../assets/png/logo.png" class="w-50 img-fluid" style="max-height: 100%;" >
+
           <form class="form-signin" autocomplete="off" (ngSubmit)="recovery()">
               <h1 class="h3 mb-3 font-weight-normal text-light">Recuperar Clave</h1>
               <small class="text-light">Se le enviara un correo con su nueva clave.</small>
@@ -12,10 +14,8 @@
 
               <!-- Remember me and forgot pass area -->
               <div class="mb-3 row mt-3 text-light">
-                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 offset-xs-1 offset-sm-1 offset-md-1 offset-lg-1 text-left">
-                    <a class="c-celeste-bishound" (click)="mostrar('registro')">Registrate</a>
-                </div>
-                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-right">
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 offset-xs-1 offset-sm-1 offset-md-1 offset-lg-1 text-left">
+
                     <a class="c-celeste-bishound" (click)="mostrar('login')">Entrar</a>
                 </div>
               </div>

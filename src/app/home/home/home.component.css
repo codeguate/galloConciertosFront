@@ -21,6 +21,10 @@
 input[type="radio"] {
   display: none;
 }
+.contan{
+  height:100vh;
+  width: auto;
+}
 @media only screen and (max-width: 1300px) {
 
   .rate label {
@@ -96,8 +100,18 @@ input[type="radio"] {
 .rate label {
   color: #a7acb1;
 }
+.close{
+  position: absolute;
+  color: #ffffff;
+  right: 0px;
+  z-index: 5000;
+  margin-right: 2%;
+}
 @media only screen and (max-width: 1000px) {
-
+  .contan{
+    width: 100%;
+    height:auto;
+  }
   .rate label {
     font-size: 100%!important;
       margin-right: 0.3rem!important;
@@ -111,7 +125,8 @@ input[type="radio"] {
     padding-bottom: 1rem;
     padding-right: 3rem;
     padding-left: 3rem;
-    height: 15vh!important;
+    height: 62px!important;
+
     background-color: rgba(0,0,0,0);
     border: 0;
     background-image: url(./../../../assets/png/boton-facebook.png);
@@ -120,6 +135,33 @@ input[type="radio"] {
     background-size: 100%;
     color: #ffffff;
   }
+  .gallo-btn-instrucciones{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 3rem;
+    padding-left: 3rem;
+    height: 62px;
+    width: 370px;
+    background-color: rgba(0,0,0,0);
+    border: 0;
+    background-image: url(./../../../assets/png/boton-instrucciones.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 62px;
+    color: #ffffff;
+  }
+  .mobile-flex{
+    display: block!important;
+  }
+  .mobile-buton{
+    width: 30%!important;
+  }
+}
+.mobile-flex{
+  display: flex;
+}
+.mobile-buton{
+  width: 100%!important;
 }
 .rateMini label {
   color: #a7acb1;
@@ -194,13 +236,14 @@ input[type="radio"]:checked ~ label {
   padding-bottom: 1rem;
   padding-right: 3rem;
   padding-left: 3rem;
-  height: 9vh;
+  height: 62px;
+  width: 238px;
   background-color: rgba(0,0,0,0);
   border: 0;
   background-image: url(./../../../assets/png/boton-ingres.png);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 100%;
+  background-size: auto 62px;
   color: #ffffff;
 }
 
@@ -208,14 +251,15 @@ input[type="radio"]:checked ~ label {
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-right: 3rem;
-  height: 9vh;
+  height: 62px;
+  width: 238px;
   padding-left: 3rem;
   background-color: rgba(0,0,0,0);
   border: 0;
   background-image: url(./../../../assets/png/boton-registrate.png);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 100%;
+  background-size: auto 62px;
   color: #ffffff;
 }
 
@@ -224,12 +268,29 @@ input[type="radio"]:checked ~ label {
   padding-bottom: 1rem;
   padding-right: 3rem;
   padding-left: 3rem;
-  height: 9vh;
+  height: 62px;
+  width: 370px;
   background-color: rgba(0,0,0,0);
   border: 0;
   background-image: url(./../../../assets/png/boton-facebook.png);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 100%;
+  background-size: auto 62px;
+  color: #ffffff;
+}
+
+.gallo-btn-instrucciones{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 3rem;
+  padding-left: 2rem;
+  height: 62px;
+  width: 238px;
+  background-color: rgba(0,0,0,0);
+  border: 0;
+  background-image: url(./../../../assets/png/boton-instrucciones.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 62px;
   color: #ffffff;
 }

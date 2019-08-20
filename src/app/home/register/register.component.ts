@@ -125,6 +125,7 @@ export class RegisterComponent implements OnInit {
     let string = formValue.dpi.replace(/ /g, '').replace(/-/g, '')+formValue.telefono+":"+formValue.username;
     let encodedString = btoa(string);
     formValue.codigo =  encodedString.substr(encodedString.length-20,encodedString.length);
+    formValue.facebook_id = formValue.idHidden;
     // console.log(formValue);
     if(formValue.edad>=18){
 

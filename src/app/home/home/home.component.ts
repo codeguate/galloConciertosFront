@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { FacebookService, InitParams, LoginResponse } from 'ngx-facebook';
+import { FacebookService, InitParams, LoginResponse, LoginOptions, AuthResponse } from 'ngx-facebook';
 
 import { NavComponent } from "./../nav.component";
 import { NotificationsService } from 'angular2-notifications';
@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
   mySlideOptions={items: 3, dots: false, center:true,nav: true,loop:true,autoplay:true,autoplayTimeout:3000,autoplayHoverPause:true,autoWidth:true};
   myCarouselOptions={items: 3, dots: true, nav: true};
   selectedData: any;
+  scope:string = 'public_profile,email'
   @BlockUI() blockUI: NgBlockUI;
   browserLang:any = this.parentComponent.browserLang;
   Id:any = '';
@@ -48,7 +49,7 @@ export class HomeComponent implements OnInit {
     private nav:NavComponent
     ) {
       let initParams: InitParams = {
-        appId: '402288300635480',
+        appId: '1217671678415675',
         status     : true,
         cookie     : true,
         xfbml      : true,
@@ -56,6 +57,7 @@ export class HomeComponent implements OnInit {
       };
 
       fb.init(initParams);
+
      }
 
   //Llamar los metodos que se van a utilizar
@@ -73,15 +75,70 @@ export class HomeComponent implements OnInit {
       this.blockUI.stop();
     }, 500);
     $(document).ready(data => {
-        this.cargarSlides();
+      // this.checkLoginState();
 
       })
   }
+
+  checkLoginState() {
+    const authResponse: AuthResponse = this.fb.getAuthResponse();
+    // console.log(authResponse)
+    if(authResponse){
+      this.getFacebookData();
+
+    }else{
+      this.loginWithFacebook();
+    }
+  }
+
+  getFacebookData(callback?) {
+    this.fb.api('/me',"get",
+    {"fields":"email,first_name,last_name,id,gender"})
+            .then(function (response) {
+              $("#nombres").val(response.first_name+" "+last_name);
+              $("#email").val(response.email?response.email:'');
+              $("#idHidden").val(response.id?response.id:'');
+              $(".gallo-btn-registrate").click()
+              console.log(response);
+
+            }).catch(error => {
+              console.log(error);
+
+            });
+  }
+
   loginWithFacebook(): void {
 
-    this.fb.login()
-      .then((response: LoginResponse) => console.log(response))
-      .catch((error: any) => console.error(error));
+    const options: LoginOptions = {
+      scope: this.scope,
+      return_scopes: true,
+      enable_profile_selector: true
+    };
+    this.fb.login(options)
+            .then((response: LoginResponse) => {
+              console.log('Logged in', response)
+              if (response.status === 'connected') {
+                // Acción que se desencadena cuando el usuario está conectado
+                // a Facebook y a nuestra APP
+                this.getFacebookData(response); // Extraer los datos
+
+                } else if (response.status === 'not_authorized') {
+                  // Acción que se desencadena cuando el usuario está conectado
+                  // a Facebook pero NO a nuestra APP
+                  //btnInicioApp(); // Botón para iniciar sesión en el APP
+
+                } else {
+                  // Acción que se desencadena cuando el usuario no está
+                  // conectado a Facebook y sepa Dios si a nuestra App
+                  this.loginWithFacebook(); // Botón para iniciar sesión en FB
+                }
+              if(response.status=="connected"){
+                this.getFacebookData(response);
+              }
+            })
+            .catch((error: any) => {
+              console.error('Error logging in',error)
+            });
 
   }
   navegar(url:string,id?:number){

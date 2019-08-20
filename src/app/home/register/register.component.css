@@ -5,11 +5,25 @@
   padding-left: 3rem;
   background-color: rgba(0,0,0,0);
   border: 0;
-  background-image: url(./../../../assets/png/boton.png);
+  background-image: url(./../../../assets/png/input_D.png);
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: 110%;
-  color: #ffffff;
+  background-position: left;
+  background-size: 100% 95%;
+  color: rgb(255,0,34);
+}
+
+.gallo-num{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
+  background-color: rgba(0,0,0,0);
+  border: 0;
+  background-image: url(./../../../assets/png/input_D.png);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 100% 95%;
+  color: rgb(255,0,34);
 }
 
 .gallo-selects{
@@ -17,14 +31,30 @@
   padding-left: 3rem;
   background-color: rgba(0,0,0,0);
   border: 0;
-  background-image: url(./../../../assets/png/boton.png);
+  background-image: url(./../../../assets/png/input_D.png);
   background-repeat: no-repeat;
   background-position-x: right;
   background-position-y: center;
-  background-size: 115%;
+  background-size: 105% 100%;
+  color: rgb(255,0,34);
+}
+
+.gallo-password{
+  padding-right: 3rem;
+  padding-left: 3rem;
+  background-color: rgba(0,0,0,0);
+  border: 0;
+  background-image: url(./../../../assets/png/input_P.png);
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: center;
+  background-size: 90%;
   color: #ffffff;
 }
-.gallo-inputs::placeholder{
+.gallo-inputs::placeholder,.gallo-num::placeholder{
+  color: rgb(255,0,34);
+}
+.gallo-password::placeholder{
   color: #ffffff;
 }
 .gallo-btn{
@@ -39,4 +69,28 @@
   background-position: center;
   background-size: 100%;
   color: #ffffff;
+}
+@media only screen and (max-width: 1000px) {
+
+
+#registroTitle{
+  width: 50%;
+}
+.password{
+  width: 50%!important;
+
+}
+.gallo-password{
+  padding-right: 3rem;
+  padding-left: 3rem;
+  background-color: rgba(0,0,0,0);
+  border: 0;
+  background-image: url(./../../../assets/png/input_P.png);
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: center;
+  background-size: 100%;
+  color: #ffffff;
+}
+
 }

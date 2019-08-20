@@ -97,7 +97,13 @@ input[type="radio"] {
   color: #a7acb1;
 }
 @media only screen and (max-width: 1000px) {
-
+  .contan{
+    width: 100%;
+    height:auto;
+  }
+  .contant2{
+    height: 100%!important;
+  }
   .rate label {
     font-size: 100%!important;
       margin-right: 0.3rem!important;
@@ -173,4 +179,16 @@ input[type="radio"]:checked ~ label {
   margin-left: 10%!important;
   margin-top: 2%!important;
   position: absolute!important;
+}
+
+.body,body{
+  height: 100vh!important;
+  background-image: url(./../../../assets/png/fondo-mobile.png) !important;
+}
+.contan{
+  height:100vh;
+  width: auto;
+}
+.contant2{
+  height: auto!important;
 }

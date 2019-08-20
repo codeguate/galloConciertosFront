@@ -1,8 +1,8 @@
 <block-ui>
 <div class="body w-100">
   <div class="cuerpo">
-    <div class="w-100 text-right pr-3">
-        <button type="button" class="btn btn-default text-light mt-2 mr-4" (click)="logout()" *ngIf="user.id">Cerrar Sesion</button>
+    <div class="w-100 text-right logout-btn">
+      <button type="button" class="btn btn-default gallo-btn-logout mt-3 mr-3" (click)="logout()" *ngIf="user.id"></button>
     </div>
 
     <router-outlet></router-outlet>
