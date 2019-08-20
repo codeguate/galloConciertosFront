@@ -312,6 +312,18 @@ export class HomeComponent implements OnInit {
 
     }
 
+    abrir(id,modal?:boolean){
+      this.blockUI.start();
+      if(modal){
+        setTimeout(() => {
+          $("#"+id).modal('show')
+        }, 500);
+      }
+
+      this.blockUI.stop();
+
+    }
+
     create(success) {
           this._service.success('¡Éxito!', success);
 

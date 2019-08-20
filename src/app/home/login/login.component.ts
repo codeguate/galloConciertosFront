@@ -78,10 +78,17 @@ createError(error) {
             },500);
 
                 this.blockUI.stop();
+                this.blockUI.stop();
                 // console.log(response);
+                setTimeout(() => {
+                $("#loginModal").modal('hide');
+
+                }, 100);
                 $("#loginModal").modal('hide');
 
                 setTimeout(() => {
+                  $("#loginModal").modal('hide');
+
                   this.router.navigate([`./bandas`])
                 }, 200);
                 this.blockUI.stop();

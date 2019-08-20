@@ -47,6 +47,9 @@ export class CancionesComponent implements OnInit {
     { color: 'yellow', value: '#ff0' },
     { color: 'black', value: '#000' }
   ];
+  protected dataSource1: CompleterData;
+  protected dataSource2: CompleterData;
+  protected dataSource3: CompleterData;
   constructor(
     private route: ActivatedRoute,
     private _service: NotificationsService,
@@ -88,10 +91,13 @@ export class CancionesComponent implements OnInit {
                             // console.log(this.SelectedData);
                             $(".body").addClass('body-interno');
                             $(".body").removeClass('body');
-                            this.dataService = this.completerService.local(this.SelectedData.canciones, 'titulo', 'titulo');
+                            let dat = this.SelectedData.canciones.map(element => { return element.titulo})
+
+                            this.dataService = this.completerService.local(dat);
                             response.bandas.canciones.forEach(element => {
                               this.canciones.push(element.titulo)
                             });
+                            this.openOnClick2=false
                             this.blockUI.stop();
                             setTimeout(() => {
                               $(".gallo-inputs>div>input").css("border","none");
@@ -128,6 +134,9 @@ export class CancionesComponent implements OnInit {
                                     $(".gallo-inputs").children("div").children("input").attr('readOnly',true)
                                   }
                                 }, 200);
+                                setTimeout(() => {
+                                  $("#graciasModal").modal('show')
+                                }, 500);
                                 if(this.cancion1==""){
                                   this.cancion1=element.titulo
                                 }else
@@ -154,7 +163,6 @@ export class CancionesComponent implements OnInit {
     }
   }
   eliminar(cancion,id?){
-    console.log(this.SelectedData.canciones);
 
     this.SelectedData.canciones.splice(this.SelectedData.canciones.findIndex(dat => {
       return dat.titulo == cancion
@@ -164,13 +172,29 @@ export class CancionesComponent implements OnInit {
     $("#cancionInput"+id).attr('disabled',true)
 
     }, 500);
+    let dat = this.SelectedData.canciones.map(element => { return element.titulo})
+    // this.dataService = null;
+    if(id==1){
+      this.dataSource1 = this.completerService.local(dat);
 
-    console.log($("#cancionInput"+id));
-    this.dataService = null;
-    this.dataService = this.completerService.local(this.SelectedData.canciones, 'titulo', 'titulo');
+    }else if(id==2){
+      this.dataSource2 = this.completerService.local(dat);
+
+    }
+    this.dataService = this.completerService.local(dat);
 
   }
+  abrir(id,modal?:boolean){
+    this.blockUI.start();
+    if(modal){
+      setTimeout(() => {
+        $("#"+id).modal('show')
+      }, 500);
+    }
 
+    this.blockUI.stop();
+
+  }
   cargarAreas(id:number){
     this.blockUI.start();
     let data = {

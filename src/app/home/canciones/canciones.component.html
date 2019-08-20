@@ -5,15 +5,15 @@
     <div class="px-5 w-100 text-center form">
       <img src="./../../../assets/png/logo.png" class="w-50 img-fluid" style="max-height: 100%;" >
       <div class="form-group d-flex w-100">
-        <ng2-completer (click)="reactivar('1')" (selected)="eliminar(cancion1,'1')" inputId="cancionInput1" [autoHighlight]="true" [disableInput]="openOnClick2" [selectOnClick]="openOnClick" [autoMatch]="true" [clearUnselected]="openOnClick"  [openOnFocus]="openOnClick" [(ngModel)]="cancion1" placeholder="Selecciona la canción" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+        <ng2-completer (click)="reactivar('1')" textSearching="Buscando..." textNoResults="No existe esa Canción" (selected)="eliminar(cancion1,'1')" inputId="cancionInput1" [autoHighlight]="true" [disableInput]="openOnClick2" [selectOnClick]="openOnClick" [autoMatch]="true" [clearUnselected]="openOnClick"  [openOnFocus]="openOnClick" [(ngModel)]="cancion1" placeholder="Selecciona la canción" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
         <!-- <input type="text" class="gallo-inputs mx-auto" id="" placeholder="Input field"> -->
       </div>
       <div class="form-group d-flex w-100">
-        <ng2-completer (click)="reactivar('2')" (selected)="eliminar(cancion2,'2')" inputId="cancionInput2" [autoHighlight]="true" [disableInput]="openOnClick2" [selectOnClick]="openOnClick" [autoMatch]="true" [clearUnselected]="openOnClick"  [openOnFocus]="openOnClick" [(ngModel)]="cancion2" placeholder="Selecciona la canción" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+        <ng2-completer (click)="reactivar('2')" textSearching="Buscando..." textNoResults="No existe esa Canción" (selected)="eliminar(cancion2,'2')" inputId="cancionInput2" [autoHighlight]="true" [disableInput]="openOnClick2" [selectOnClick]="openOnClick" [autoMatch]="true" [clearUnselected]="openOnClick"  [openOnFocus]="openOnClick" [(ngModel)]="cancion2" placeholder="Selecciona la canción" class="gallo-inputs mx-auto" [datasource]="dataSource1" [minSearchLength]="0"></ng2-completer>
         <!-- <input type="text" class="gallo-inputs mx-auto" id="" placeholder="Input field"> -->
       </div>
       <div class="form-group d-flex w-100">
-      <ng2-completer (click)="reactivar('3')" (selected)="eliminar(cancion3,'3')" inputId="cancionInput3" [autoHighlight]="true" [disableInput]="openOnClick2" [selectOnClick]="openOnClick" [autoMatch]="true" [clearUnselected]="openOnClick"  [openOnFocus]="openOnClick" [(ngModel)]="cancion3" placeholder="Selecciona la canción" class="gallo-inputs mx-auto" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+      <ng2-completer (click)="reactivar('3')" textSearching="Buscando..." textNoResults="No existe esa Canción" (selected)="eliminar(cancion3,'3')" inputId="cancionInput3" [autoHighlight]="true" [disableInput]="openOnClick2" [selectOnClick]="openOnClick" [autoMatch]="true" [clearUnselected]="openOnClick"  [openOnFocus]="openOnClick" [(ngModel)]="cancion3" placeholder="Selecciona la canción" class="gallo-inputs mx-auto" [datasource]="dataSource2" [minSearchLength]="0"></ng2-completer>
       <!-- <ngx-select placeholder="Vota por" class="gallo-inputs mx-auto"  [items]="canciones" [(ngModel)]="cancion3"></ngx-select> -->
       </div>
       <div class="my-2 d-flex w-100">
@@ -27,7 +27,7 @@
 
   </div>
 
-  <img src="{{SelectedData.foto1}}" style="margin-top: 3%;width: 45%;max-height:100%;" class="img-fluid ml-auto">
+  <img src="{{SelectedData.foto1}}" style="margin-top: 3%;width: 45%;max-height:100%;" class="img-fluid ml-auto artista">
   <!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 d-flex img_banda">
       <img src="{{SelectedData.foto1}}" style="width:50%;max-height:100%;" class="img-fluid ml-auto"><br>
 
@@ -48,3 +48,29 @@
 
 
 </div>
+
+<div class="modal fade " id="graciasModal">
+    <div class="modal-dialog-centered  modal-lg">
+      <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-body body-interno-new">
+                <div class="d-flex w-100">
+                    <div class="w-50 d-flex">
+                        <img src="./../../../assets/png/logo.png" class="m-auto" style="max-height: 100%; width: 50vw;">
+                    </div>
+                    <div class="w-50 d-flex">
+                      <img src="./../../../assets/png/gracias.png" class="m-auto" style="width:100%;max-height: 100%;">
+                    </div>
+                </div>
+                <div class="w-100 d-flex">
+                  <button class="btn btn-lg btn-primary btn-block gallo-btn m-auto hoverClick" type="button" (click)="navegar('../../bandas')" >Atras</button>
+                </div>
+
+            </div>
+
+
+      </div>
+    </div>
+  </div>

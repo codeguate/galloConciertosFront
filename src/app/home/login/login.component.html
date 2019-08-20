@@ -5,7 +5,7 @@
 
         <form class="form-signin" autocomplete="off" id="login-form"  #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
             <div class="input-group mb-2">
-              <input type="text" class="form-control gallo-inputs" name="username" required
+              <input type="text" class="form-control gallo-inputs" name="username" required autofocus="true"
               ngModel #username="ngModel" placeholder="Usuario">
             </div>
 

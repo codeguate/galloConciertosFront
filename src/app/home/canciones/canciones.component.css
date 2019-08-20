@@ -74,7 +74,18 @@
 .spotyfy{
   width: 10vw;
 }
+.close{
+  position: absolute;
+  color: #ffffff;
+  right: 0px;
+  z-index: 5000;
+  margin-right: 2%;
+}
 @media only screen and (max-width: 1000px){
+  .artista{
+    width:375px!important;
+    height:368px!important;
+  }
   .contan{
     width: 100%;
     height:auto;
