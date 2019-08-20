@@ -299,3 +299,10 @@ input[type="radio"]:checked ~ label {
   background-size: auto 62px;
   color: #ffffff;
 }
+@media only screen and (min-width: 1000px){
+  .gallo-btn-ingresar ,.gallo-btn-registrate ,.gallo-btn-instrucciones{
+    max-width: 238px;
+    width: 100%;
+    background-size: contain;
+  }
+}
