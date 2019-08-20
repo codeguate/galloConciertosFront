@@ -29,6 +29,11 @@ export class HomeComponent implements OnInit {
   mySlideOptions={items: 3, dots: false, center:true,nav: true,loop:true,autoplay:true,autoplayTimeout:3000,autoplayHoverPause:true,autoWidth:true};
   myCarouselOptions={items: 3, dots: true, nav: true};
   selectedData: any;
+  facebookData = {
+    id:'',
+    email:'',
+    nombre:'',
+  }
   scope:string = 'public_profile,email'
   @BlockUI() blockUI: NgBlockUI;
   browserLang:any = this.parentComponent.browserLang;
@@ -95,13 +100,19 @@ export class HomeComponent implements OnInit {
     this.fb.api('/me',"get",
     {"fields":"email,first_name,last_name,id,gender"})
             .then(function (response) {
+
               $("#nombres").val(response.first_name+" "+response.last_name);
               $("#email").val(response.email?response.email:'');
               $("#idHidden").val(response.id?response.id:'');
               $("#email").focus();
               $("#idHidden").focus();
               $("#nombres").focus();
+              // $("#getFacebookData").click();
               $(".gallo-btn-registrate").click()
+
+
+
+
               // console.log(response);
 
             }).catch(error => {
@@ -109,7 +120,45 @@ export class HomeComponent implements OnInit {
 
             });
   }
+  getFacebookDataF(){
+    this.BandasService.getUsersById($("#idHidden").val())
+                        .then(response1 => {
+                          console.log(response1);
 
+                          this.blockUI.stop();
+                          if(response1.id && response1.id >0){
+                            localStorage.setItem('currentUser', response1.username);
+                            localStorage.setItem('currentEmail', response1.email);
+                            localStorage.setItem('currentId', response1.id);
+                            localStorage.setItem('currentPicture', response1.foto);
+                            localStorage.setItem('currentState', response1.state);
+                            localStorage.setItem('currentEmail', response1.email);
+                            localStorage.setItem('currentApellidos', response1.apellidos);
+                            localStorage.setItem('currentNombres', response1.nombres);
+                            localStorage.setItem('currentAvatar', response1.foto);
+                            localStorage.setItem('currentRol', response1.rol);
+                                // console.log(response);
+
+                                setTimeout(() => {
+
+                                  this.router.navigate([`./bandas`])
+                                }, 200);
+                          }else{
+                            $(".gallo-btn-registrate").click()
+                          }
+
+
+                        }).catch(error => {
+                          $(".gallo-btn-registrate").click()
+                          console.clear
+
+                          this.blockUI.stop();
+                          this.createError(error)
+                        })
+    this.facebookData.nombre=$("#nombres").val();
+    this.facebookData.email=$("#email").val();
+    this.facebookData.id=$("#idHidden").val();
+  }
   loginWithFacebook(): void {
 
     const options: LoginOptions = {
@@ -133,11 +182,9 @@ export class HomeComponent implements OnInit {
                 } else {
                   // Acción que se desencadena cuando el usuario no está
                   // conectado a Facebook y sepa Dios si a nuestra App
-                  this.loginWithFacebook(); // Botón para iniciar sesión en FB
+                  // this.loginWithFacebook(); // Botón para iniciar sesión en FB
                 }
-              if(response.status=="connected"){
-                this.getFacebookData(response);
-              }
+
             })
             .catch((error: any) => {
               console.error('Error logging in',error)
@@ -187,12 +234,6 @@ export class HomeComponent implements OnInit {
                                 $(".owl-prev").css('position', 'absolute');
                                 $(".owl-prev").css('z-index', '100');
 
-
-
-                                $(".owl-dots").css('background-image', 'url(http://documentos.devcodegt.com/gallo/boton.png)');
-                                $(".owl-dots").css('margin-top', '5%');
-                                $(".owl-dots").css('position', 'absolute');
-                                $(".owl-dots").css('width', '100%');
                                 var owl = $('.owl-carousel');
                                 owl.on('mousewheel', '.owl-stage', function (e) {
                                   if (e.deltaY>0) {

@@ -246,13 +246,6 @@ export class CancionesComponent implements OnInit {
                               $(".owl-prev").css('margin-top', '-2%');
                               $(".owl-prev").css('position', 'absolute');
                               $(".owl-prev").css('z-index', '100');
-
-
-
-                              $(".owl-dots").css('background-image', 'url(http://documentos.devcodegt.com/gallo/boton.png)');
-                              $(".owl-dots").css('margin-top', '5%');
-                              $(".owl-dots").css('position', 'absolute');
-                              $(".owl-dots").css('width', '100%');
                               var owl = $('.owl-carousel');
                               owl.on('mousewheel', '.owl-stage', function (e) {
                                 if (e.deltaY>0) {

@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
   numeroTelefono:string = ""
   @BlockUI() blockUI: NgBlockUI;
   @Input() foreignId:number
+  @Input() facebook:any
   selectedData:any
   today:any
   nacimientoToday:any
@@ -131,6 +132,15 @@ export class RegisterComponent implements OnInit {
   insert(formValue:any){
 
     this.blockUI.start();
+    if(formValue.nombres==""){
+      formValue.nombres = $("#nombres").val();;
+    }
+    if(formValue.email==""){
+      formValue.email = $("#email").val();;
+    }
+    if(formValue.idHidden==""){
+      formValue.idHidden =$("#idHidden").val();;
+    }
     formValue.dpi =  formValue.dpi.replace(/ /g, '').replace(/-/g, '')
     formValue.birthday =  formValue.edad
     formValue.edad =  this.calcularEdad(formValue.edad)

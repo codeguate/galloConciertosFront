@@ -38,6 +38,19 @@ return Promise.reject(error.message || error)
     }
 
 
+
+    getUsersById(id:string):Promise<any> {
+      let url = `${this.basePath}/api/facebook/${id}/users`
+        return this.http.get(url)
+                        .toPromise()
+                          .then(response => {
+                            //console.log(response)
+                            return response
+                          })
+                          .catch(this.handleError)
+      }
+
+
     getAllMine(id):Promise<any> {
     let url = `${this.basePath}/api/filter/0/bandas/${id}?filter=usuario`
       return this.http.get(url)

@@ -32,6 +32,8 @@
   </div>
 </div>
 
+<button type="button" class="btn btn-default" id="getFacebookData" hidden="true" (click)="getFacebookDataF()"></button>
+
 <simple-notifications [options]="options"></simple-notifications>
 <div class="modal fade " id="loginModal">
   <div class="modal-dialog-centered modal-dialog  modal-lg">
@@ -46,7 +48,7 @@
             <app-recovery></app-recovery>
         </div>
         <div class="modal-body body-interno-new  d-none" id="registroBody">
-            <app-register foreignId="{{foreignId}}"></app-register>
+            <app-register foreignId="{{foreignId}}" facebook="{{facebookData}}"></app-register>
         </div>
     </div>
   </div>
