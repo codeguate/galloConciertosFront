@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { FacebookService, InitParams, LoginResponse, LoginOptions, AuthResponse } from 'ngx-facebook';
+// import { FacebookService, InitParams, LoginResponse, LoginOptions, AuthResponse } from 'ngx-facebook';
 
 import { NavComponent } from "./../nav.component";
 import { NotificationsService } from 'angular2-notifications';
@@ -12,7 +12,7 @@ import { AppComponent } from "./../../app.component";
 import {TranslateService} from '@ngx-translate/core';
 
 declare var $: any
-
+declare var FB: any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -49,24 +49,32 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private BandasService:BandasService,
     private app: AppComponent,
-    private fb: FacebookService,
+    // private fb: FacebookService,
     public translate: TranslateService,
     private nav:NavComponent
     ) {
-      let initParams: InitParams = {
-        appId: '1217671678415675',
-        status     : true,
-        cookie     : true,
-        xfbml      : true,
-        version    : 'v2.1'
-      };
+      // let initParams: InitParams = {
+      //   appId: '1217671678415675',
+      //   cookie     : true,
+      //   xfbml      : true,
+      //   version    : 'v4.0'
+      // };
 
-      fb.init(initParams);
+      // fb.init(initParams);
+      FB.init({
+        appId: '1217671678415675',
+        cookie: false,  // enable cookies to allow the server to access
+        // the session
+        xfbml: true,  // parse social plugins on this page
+        version: 'v4.0' // use graph api version 2.5
+      });
 
      }
 
   //Llamar los metodos que se van a utilizar
   ngOnInit() {
+
+
       this.blockUI.start();
       let datos = localStorage.getItem('carrito');
       if(datos){
@@ -85,45 +93,26 @@ export class HomeComponent implements OnInit {
       })
   }
 
-  checkLoginState() {
-    const authResponse: AuthResponse = this.fb.getAuthResponse();
-    // console.log(authResponse)
-    if(authResponse){
-      this.getFacebookData();
+  getFacebookData(id) {
 
-    }else{
-      this.loginWithFacebook();
-    }
-  }
+    FB.api(
+      "/"+id+"/?fields=email,first_name,last_name,id,gender,age_range","get","",
+      function (response) {
+        if (response && !response.error) {
+          $("#emailBModal").val(response.email)
+          $("#nombreBModal").val(response.first_name+" "+response.last_name)
+          $("#idBModal").val(response.id)
+          // $("#getFacebookData").click();
+          $(".gallo-btn-registrate").click()
+        }
+      }
+  );
 
-  getFacebookData(callback?) {
-    this.fb.api('/me',"get",
-    {"fields":"email,first_name,last_name,id,gender"})
-            .then(function (response) {
-
-              $("#registroBody #nombres").val(response.first_name+" "+response.last_name);
-              $("#registroBody #email").val(response.email);
-              $("#registroBody #idHidden").val(response.id);
-              $("#registroBody #email").focus();
-              $("#registroBody #idHidden").focus();
-              $("#registroBody #nombres").focus();
-              // $("#getFacebookData").click();
-              $(".gallo-btn-registrate").click()
-
-
-
-
-              // console.log(response);
-
-            }).catch(error => {
-              console.log(error);
-
-            });
   }
   getFacebookDataF(){
     this.BandasService.getUsersById($("#idHidden").val())
                         .then(response1 => {
-                          console.log(response1);
+                          // console.log(response1);
 
                           this.blockUI.stop();
                           if(response1.id && response1.id >0){
@@ -159,36 +148,35 @@ export class HomeComponent implements OnInit {
     this.facebookData.email=$("#email").val();
     this.facebookData.id=$("#idHidden").val();
   }
+  me(userId, accessToken) {
+    FB.api(
+        "/" + userId + '?fields=email,first_name,last_name,id,gender,age_range',
+        (result) => {
+            console.log("result===", result);
+            if (result && !result.error) {
+              $("#emailBModal").val(result.email)
+              $("#nombreBModal").val(result.first_name+" "+result.last_name)
+              $("#idBModal").val(result.id)
+              // $("#getFacebookData").click();
+              $(".gallo-btn-registrate").click()
+            }
+        }
+      )
+}
   loginWithFacebook(): void {
+          FB.login((response: any) => {
+            if (response.status === 'connected') {
+              this.me(response.authResponse.userID, response.authResponse.accessToken);
+                // Logged into your app and Facebook.
+            } else if (response.status === 'not_authorized') {
+                // The person is logged into Facebook, but not your app.
+            } else {
 
-    const options: LoginOptions = {
-      scope: this.scope,
-      return_scopes: true,
-      enable_profile_selector: true
-    };
-    this.fb.login(options)
-            .then((response: LoginResponse) => {
-              // console.log('Logged in', response)
-              if (response.status === 'connected') {
-                // Acción que se desencadena cuando el usuario está conectado
-                // a Facebook y a nuestra APP
-                this.getFacebookData(response); // Extraer los datos
+                // The person is not logged into Facebook, so we're not sure if
+                // they are logged into this app or not.
+            }
 
-                } else if (response.status === 'not_authorized') {
-                  // Acción que se desencadena cuando el usuario está conectado
-                  // a Facebook pero NO a nuestra APP
-                  //btnInicioApp(); // Botón para iniciar sesión en el APP
-
-                } else {
-                  // Acción que se desencadena cuando el usuario no está
-                  // conectado a Facebook y sepa Dios si a nuestra App
-                  // this.loginWithFacebook(); // Botón para iniciar sesión en FB
-                }
-
-            })
-            .catch((error: any) => {
-              console.error('Error logging in',error)
-            });
+        }, {scope: 'email,public_profile'});
 
   }
   navegar(url:string,id?:number){
@@ -339,6 +327,7 @@ export class HomeComponent implements OnInit {
           $("#loginModal").modal('show')
         }, 500);
       }
+
       setTimeout(() => {
         if(!$("#registroBody").hasClass('d-none')){
           $("#registroBody").addClass('d-none');

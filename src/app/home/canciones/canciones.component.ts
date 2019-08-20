@@ -167,11 +167,7 @@ export class CancionesComponent implements OnInit {
     this.SelectedData.canciones.splice(this.SelectedData.canciones.findIndex(dat => {
       return dat.titulo == cancion
     }), 1)
-    setTimeout(() => {
-    $("#cancionInput"+id).attr('readOnly',true)
-    $("#cancionInput"+id).attr('disabled',true)
 
-    }, 500);
     let dat = this.SelectedData.canciones.map(element => { return element.titulo})
     // this.dataService = null;
     if(id==1){

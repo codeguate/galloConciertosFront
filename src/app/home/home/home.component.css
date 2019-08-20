@@ -108,6 +108,11 @@ input[type="radio"] {
   margin-right: 2%;
 }
 @media only screen and (max-width: 1000px) {
+  .logo{
+    width: 345px;
+    height: 315px!important;
+    min-height: auto!important;
+  }
   .contan{
     width: 100%;
     height:auto;

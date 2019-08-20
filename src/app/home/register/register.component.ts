@@ -5,6 +5,7 @@ import { NotificationsService } from 'angular2-notifications';
 import { UsersService } from "../_services/users.service";
 import { NavComponent } from "../nav.component";
 import { AuthService } from "../_services/auth.service";
+import { BandasService } from "../_services/bandas.service";
 declare let $: any
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 
@@ -36,6 +37,7 @@ export class RegisterComponent implements OnInit {
       private router: Router,
       private AuthService: AuthService,
       private mainService: UsersService,
+      private BandasService: BandasService,
       private nav:NavComponent
     ) { }
 
@@ -50,10 +52,22 @@ export class RegisterComponent implements OnInit {
     let yyyy = today.getFullYear()-21;
     this.today = yyyy + '-' + mm + '-' + dd;
     this.nacimientoToday = yyyy + '-' + mm + '-' + dd;
-    $(document).ready(function () {
-      // console.log();
+      $(document).ready(function () {
+        if($("#nombreBModal").val()!=''){
+          $("#nombres").val($("#nombreBModal").val())
+          $("#email").val($("#emailBModal").val())
+          $("#username").val($("#email").val().split("@")[0])
+          $("#idHidden").val($("#idBModal").val())
 
-    });
+        }
+      });
+
+      if($("#email").val()!=''){
+        this.usernameFind($("#email").val());
+      }
+      if($("#idBModal").val()!=''){
+        this.buscarFacebook($("#idBModal").val());
+      }
   }
   usernameFind(email:string){
     if(email.indexOf("@")>0){
@@ -64,6 +78,46 @@ export class RegisterComponent implements OnInit {
   }
   select(dat:boolean){
     this.selected = dat;
+  }
+
+  buscarFacebook(id){
+    this.BandasService.getUsersById(id)
+                      .then(response => {
+                        if(response.id){
+                          localStorage.setItem('currentUser', response.username);
+                          localStorage.setItem('currentEmail', response.email);
+                          localStorage.setItem('currentId', response.id);
+                          localStorage.setItem('currentPicture', response.foto);
+                          localStorage.setItem('currentState', response.state);
+                          localStorage.setItem('currentEmail', response.email);
+                          localStorage.setItem('currentApellidos', response.apellidos);
+                          localStorage.setItem('currentNombres', response.nombres);
+                          localStorage.setItem('currentAvatar', response.foto);
+                          localStorage.setItem('currentRol', response.rol);
+                              this.nav.fullSession(true)
+                              this.blockUI.stop();
+                        // this.cargarAll()
+
+                          setTimeout(() => {
+                            $("#loginModal").modal('hide');
+                          }, 100);
+                          $("#loginModal").modal('hide');
+                          this.createSuccess('Usted ya esta Registrado')
+                          setTimeout(() => {
+                          $("#loginModal").modal('hide');
+                            this.router.navigate(["./bandas"])
+                          }, 200);
+                          // location.reload();
+                        }
+
+                        this.blockUI.stop();
+                        console.clear
+                      }).catch(error => {
+                        console.clear
+
+                        this.blockUI.stop();
+                        // this.createError(error)
+                      })
   }
 
   cargarAll(){
@@ -133,13 +187,13 @@ export class RegisterComponent implements OnInit {
 
     this.blockUI.start();
     if(formValue.nombres==""){
-      formValue.nombres = $("#nombres").val();;
+      formValue.nombres = $("#nombres").val();
     }
     if(formValue.email==""){
-      formValue.email = $("#email").val();;
+      formValue.email = $("#email").val();
     }
     if(formValue.idHidden==""){
-      formValue.idHidden =$("#idHidden").val();;
+      formValue.idHidden =$("#idHidden").val();
     }
     formValue.dpi =  formValue.dpi.replace(/ /g, '').replace(/-/g, '')
     formValue.birthday =  formValue.edad
@@ -150,7 +204,7 @@ export class RegisterComponent implements OnInit {
     let encodedString = btoa(string);
     formValue.codigo =  encodedString.substr(encodedString.length-20,encodedString.length);
     formValue.facebook_id = formValue.idHidden;
-    console.log(formValue);
+    // console.log(formValue);
     if(formValue.edad>=18){
 
     this.mainService.create(formValue)

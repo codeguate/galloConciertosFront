@@ -2,7 +2,7 @@
 <div class="">
     <div class="row">
       <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 d-flex" >
-        <img src="./../../../assets/png/logo.png" class="w-100 img-fluid m-auto" style="max-height: 100%;" >
+        <img src="./../../../assets/png/logo.png" class=" img-fluid m-auto logo" style="max-height: 100%;" >
       </div>
       <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 text-left border-secondary round-border">
           <form class="form-signin" autocomplete="off" id="register-form"  #registerForm="ngForm" (ngSubmit)="insert(registerForm.value)">
@@ -42,10 +42,10 @@
                   <input type="text" name="dpi" id="dpi" ngModel #dpi="ngModel" class="form-control gallo-inputs" placeholder="DPI" required="required" title="DPI" (keyup)="cuiIsValid($event)" [(ngModel)]="DPI">
                   <input type="hidden" name="idHidden" id="idHidden" ngModel #idHidden="ngModel" class="form-control gallo-inputs">
                 </div>
-                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                  <input type="date" name="edad" id="edad" ngModel #edad="ngModel" class="form-control gallo-num" placeholder="Edad" [ngClass]="{'border border-danger': edad.value<18,'border border-success': edad.value>=18}" required="required" title="Edad" min="18" max="100">
+                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6 w-50">
+                  <input type="date" name="edad" id="edad" ngModel #edad="ngModel" class="form-control gallo-num" placeholder="Edad"  required="required" title="Edad" >
                 </div>
-                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6 w-50">
                   <select name="genero" id="genero" ngModel #genero="ngModel" class="form-control gallo-selects" required="required" title="Genero">
                     <option value="">Género</option>
                     <option value="M">Masculino</option>
