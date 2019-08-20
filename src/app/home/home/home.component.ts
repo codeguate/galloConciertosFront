@@ -95,7 +95,7 @@ export class HomeComponent implements OnInit {
     this.fb.api('/me',"get",
     {"fields":"email,first_name,last_name,id,gender"})
             .then(function (response) {
-              $("#nombres").val(response.first_name+" "+last_name);
+              $("#nombres").val(response.first_name+" "+response.last_name);
               $("#email").val(response.email?response.email:'');
               $("#idHidden").val(response.id?response.id:'');
               $(".gallo-btn-registrate").click()
