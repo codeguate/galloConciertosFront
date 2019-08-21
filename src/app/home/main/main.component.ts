@@ -137,10 +137,13 @@ navegar(url:string,id?:number){
 
                               var owl = $('.owl-carousel');
                               owl.on('mousewheel', '.owl-stage', function (e) {
-                                if (e.deltaY>0) {
-                                    owl.trigger('next.owl');
-                                } else {
+                                console.log(e.originalEvent);
+                                // console.log(e);
+
+                                if (e.originalEvent.deltaY>0) {
                                     owl.trigger('prev.owl');
+                                } else {
+                                    owl.trigger('next.owl');
                                 }
                                   e.preventDefault();
                               });

@@ -82,6 +82,9 @@
   margin-right: 2%;
 }
 @media only screen and (max-width: 1000px){
+  .modal-content {
+    height: 300px;
+  }
   .artista{
     width:375px!important;
     height:368px!important;

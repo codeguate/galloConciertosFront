@@ -1,8 +1,5 @@
 .gallo-inputs{
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-right: 3rem;
-  padding-left: 3rem;
+  padding-left: 2rem;
   background-color: rgba(0,0,0,0);
   border: 0;
   background-image: url(./../../../assets/png/input_D.png);
@@ -13,10 +10,7 @@
 }
 
 .gallo-num{
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-right: 3rem;
-  padding-left: 3rem;
+  padding-left: 2rem;
   background-color: rgba(0,0,0,0);
   border: 0;
   background-image: url(./../../../assets/png/input_D.png);
@@ -27,7 +21,6 @@
 }
 
 .gallo-selects{
-  padding-right: 3rem;
   padding-left: 3rem;
   background-color: rgba(0,0,0,0);
   border: 0;
@@ -40,8 +33,7 @@
 }
 
 .gallo-password{
-  padding-right: 3rem;
-  padding-left: 3rem;
+  padding-left: 2rem;
   background-color: rgba(0,0,0,0);
   border: 0;
   background-image: url(./../../../assets/png/input_P.png);
@@ -58,10 +50,7 @@
   color: #ffffff;
 }
 .gallo-btn{
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-right: 3rem;
-  padding-left: 3rem;
+  padding-left: 2rem;
   background-color: rgba(0,0,0,0);
   border: 0;
   background-image: url(./../../../assets/png/boton.png);
@@ -69,6 +58,15 @@
   background-position: center;
   background-size: 100%;
   color: #ffffff;
+}
+@media only screen and (min-width: 1000px) {
+  .gallo-inputs{
+    padding-left: 3rem;
+  }
+  .gallo-password{
+    padding-left: 3rem;
+
+  }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -87,8 +85,7 @@
 
 }
 .gallo-password{
-  padding-right: 3rem;
-  padding-left: 3rem;
+  padding-left: 2rem;
   background-color: rgba(0,0,0,0);
   border: 0;
   background-image: url(./../../../assets/png/input_P.png);
