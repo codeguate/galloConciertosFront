@@ -2,13 +2,13 @@
 <div class="">
     <div class="row">
       <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 d-flex" >
-        <img src="./../../../assets/png/logo.png" class=" img-fluid m-auto logo" style="max-height: 100%;" >
+        <img src="assets/png/logo.png" class=" img-fluid m-auto logo" style="max-height: 100%;" >
       </div>
       <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 text-left border-secondary round-border">
           <form class="form-signin" autocomplete="off" id="register-form"  #registerForm="ngForm" (ngSubmit)="insert(registerForm.value)">
 
             <h1 class="h3 text-light mb-3 mt-3 font-weight-bold">
-              <img src="./../../../assets/png/registrate-para-votar.png" id="registroTitle" class="w-50 img-fluid m-auto" style="max-height: 100%;" >
+              <img src="assets/png/registrate-para-votar.png" id="registroTitle" class="w-50 img-fluid m-auto" style="max-height: 100%;" >
 
             </h1>
               <div class="row">
@@ -21,20 +21,13 @@
                 <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   <input type="text" name="username" id="username" ngModel #username="ngModel" class="form-control gallo-inputs" placeholder="Usuario" [(ngModel)]="usernameF" required="required" title="Usuario">
                 </div>
-                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6 password">
+                <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12 password">
                   <input type="password" name="password" id="password" ngModel #password="ngModel" class="form-control gallo-password" placeholder="Password" required="required" title="Password">
                 </div>
-                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6 password">
-                  <input type="password" name="password_rep" id="password_rep" ngModel #password_rep="ngModel" class="form-control gallo-password" placeholder="Password" required="required" title="Password">
-                </div>
-
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngIf="password">
 
                   <div class="alert text-danger" *ngIf="password && password.value!='' && (password && password.value && password.value.length<8)">
                     <strong>El password debe tener al menos 8 carácteres!</strong>
-                  </div>
-                  <div class="alert text-danger" *ngIf="password_rep.value!='' && password.value!=password_rep.value ">
-                    <strong>Los dos passwords deben coincidir!</strong>
                   </div>
 
                 </div>
@@ -42,14 +35,37 @@
                   <input type="text" name="dpi" id="dpi" ngModel #dpi="ngModel" class="form-control gallo-inputs" placeholder="DPI" required="required" title="DPI" (keyup)="cuiIsValid($event)" [(ngModel)]="DPI">
                   <input type="hidden" name="idHidden" id="idHidden" ngModel #idHidden="ngModel" class="form-control gallo-inputs">
                 </div>
-                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6 w-50">
-                  <input type="date" name="edad" id="edad" ngModel #edad="ngModel" class="form-control gallo-num" placeholder="Edad"  required="required" title="Edad" >
+                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6 w-50 row">
+
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                      <select name="year" id="year" ngModel #year="ngModel" *ngIf="years" class="form-control gallo-selects" required="required" title="year">
+                          <option value="">Año</option>
+                          <option value="{{data.id}}" *ngFor="let data of years">{{data.id}}</option>
+                      </select>
+                  </div>
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                      <select name="month" id="month" ngModel #month="ngModel" *ngIf="months" class="form-control gallo-selects" required="required" title="month">
+                          <option value="">Mes</option>
+                          <option value="{{data.id}}" *ngFor="let data of months">{{data.nombre}}</option>
+                      </select>
+                  </div>
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                      <select name="day" id="day" ngModel #day="ngModel" *ngIf="days" class="form-control gallo-selects" required="required" title="day">
+                          <option value="">Dia</option>
+                          <option value="{{data.id}}" *ngFor="let data of days">{{data.id}}</option>
+                      </select>
+                  </div>
+
+
+
+
+                  <!-- <input type="date" name="edad" id="edad" ngModel #edad="ngModel" class="form-control gallo-num" placeholder="Edad"  required="required" title="Edad" > -->
                 </div>
                 <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6 w-50">
                   <select name="genero" id="genero" ngModel #genero="ngModel" class="form-control gallo-selects" required="required" title="Genero">
-                    <option value="">Género</option>
-                    <option value="M">Masculino</option>
-                    <option value="F">Femenino</option>
+                    <option value="">Erés</option>
+                    <option value="M">Hombre</option>
+                    <option value="F">Mujer</option>
                   </select>
                   <!-- <input type="text" name="genero" id="genero" ngModel #genero="ngModel" class="form-control gallo-inputs " placeholder="Genero" required="required" title="Genero" > -->
                 </div>

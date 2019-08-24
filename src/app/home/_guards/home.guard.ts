@@ -9,11 +9,11 @@ export class HomeGuard implements CanActivate {
     constructor(private router: Router) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-      if (localStorage.getItem('currentUser')) {
+      if (localStorage.getItem('currentId')) {
         this.router.navigate(['./../../bandas']);
       }
 
-      if (!localStorage.getItem('currentUser')) {
+      if (!localStorage.getItem('currentId')) {
         return true;
       }
 

@@ -21,7 +21,6 @@
 }
 
 .gallo-selects{
-  padding-left: 3rem;
   background-color: rgba(0,0,0,0);
   border: 0;
   background-image: url(./../../../assets/png/input_D.png);
@@ -40,7 +39,7 @@
   background-repeat: no-repeat;
   background-position-x: right;
   background-position-y: center;
-  background-size: 90%;
+  background-size: 100% auto;
   color: #ffffff;
 }
 .gallo-inputs::placeholder,.gallo-num::placeholder{
@@ -59,6 +58,16 @@
   background-size: 100%;
   color: #ffffff;
 }
+.row3{
+  margin-right: -15px!important;
+  margin-left: -15px!important;
+}
+.row2{
+display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px!important;
+  margin-left: -15px!important;
+}
 @media only screen and (min-width: 1000px) {
   .gallo-inputs{
     padding-left: 3rem;
@@ -67,23 +76,39 @@
     padding-left: 3rem;
 
   }
-}
 
+}
+.row2{
+  display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px!important;
+    margin-left: -15px!important;
+}
 @media only screen and (max-width: 1000px) {
+
+  .gallo-selects{
+    font-size: 0.8em;
+    padding-left: 0.5rem;
+  }
 .logo{
   width: 345px;
   height: 315px!important;
   min-height: auto!important;
 }
-
+.row3{
+  margin-right: -15px!important;
+  margin-left: -15px!important;
+}
+.row2{
+display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px!important;
+  margin-left: -15px!important;
+}
 #registroTitle{
   width: 50%;
 }
-.password{
-  width: 50%!important;
-  padding: 0px!important;
 
-}
 .gallo-password{
   padding-left: 2rem;
   background-color: rgba(0,0,0,0);
@@ -92,7 +117,7 @@
   background-repeat: no-repeat;
   background-position-x: right;
   background-position-y: center;
-  background-size: 100%;
+  background-size: 100% auto;
   color: #ffffff;
 }
 

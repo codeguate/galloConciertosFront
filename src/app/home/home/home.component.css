@@ -115,7 +115,7 @@ input[type="radio"] {
     margin-left: 10%!important;
   }
   }
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 999px) {
   .logo{
     width: 345px;
     height: 315px!important;
@@ -160,7 +160,7 @@ input[type="radio"] {
     background-image: url(./../../../assets/png/boton-instrucciones.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: auto 62px;
+    background-size: 100% 62px;
     color: #ffffff;
   }
   .mobile-flex{
@@ -292,23 +292,28 @@ input[type="radio"]:checked ~ label {
   color: #ffffff;
 }
 
-.gallo-btn-instrucciones{
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-right: 3rem;
-  padding-left: 2rem;
-  height: 62px;
-  width: 238px;
-  background-color: rgba(0,0,0,0);
-  border: 0;
-  background-image: url(./../../../assets/png/boton-instrucciones.png);
-  background-repeat: no-repeat;
-  background-position: center;
+
+@media only screen and (min-width: 1000px){
+  .gallo-btn-instrucciones{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 3rem;
+    padding-left: 2rem;
+    height: 62px;
+    width: 268px;
+    background-color: rgba(0,0,0,0);
+    border: 0;
+    background-image: url(./../../../assets/png/boton-instrucciones.png);
+    background-repeat: no-repeat;
+    background-position: center;
   background-size: auto 62px;
   color: #ffffff;
-}
-@media only screen and (min-width: 1000px){
-  .gallo-btn-ingresar ,.gallo-btn-registrate ,.gallo-btn-instrucciones{
+  }
+  .gallo-btn-instrucciones{
+    width: 100%;
+    background-size: contain;
+  }
+  .gallo-btn-ingresar ,.gallo-btn-registrate {
     max-width: 238px;
     width: 100%;
     background-size: contain;

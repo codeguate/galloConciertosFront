@@ -19,11 +19,64 @@ export class RegisterComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   title:any = "Registro"
   Table:any
+  years = []
+  days = []
+  months = [
+    {
+      nombre:"Enero",
+      id:"01"
+    },
+    {
+      nombre:"Febrero",
+      id:"02"
+    },
+    {
+      nombre:"Marzo",
+      id:"03"
+    },
+    {
+      nombre:"Abril",
+      id:"04"
+    },
+    {
+      nombre:"Mayo",
+      id:"05"
+    },
+    {
+      nombre:"Junio",
+      id:"06"
+    },
+    {
+      nombre:"Julio",
+      id:"07"
+    },
+    {
+      nombre:"Agosto",
+      id:"08"
+    },
+    {
+      nombre:"Septiembre",
+      id:"09"
+    },
+    {
+      nombre:"Octubre",
+      id:"10"
+    },
+    {
+      nombre:"Noviembre",
+      id:"11"
+    },
+    {
+      nombre:"Diciembre",
+      id:"12"
+    },
+  ]
   comboParent:any
   usernameF:string =""
   enviarData=false
   DPI:string = ""
   numeroTelefono:string = ""
+  selectedDate:string
   @BlockUI() blockUI: NgBlockUI;
   @Input() foreignId:number
   @Input() facebook:any
@@ -42,7 +95,14 @@ export class RegisterComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    for (let index = 1; index < 32; index++) {
+      this.days.push({id:index});
 
+    }
+    for (let index = 2001; index > 1900; index--) {
+      this.years.push({id:index});
+
+    }
     $('#searchContent').addClass('d-none');
     $('#inSeachForm').removeClass('d-none');
     $('#logoTipo').addClass('d-none');
@@ -53,12 +113,32 @@ export class RegisterComponent implements OnInit {
     this.today = yyyy + '-' + mm + '-' + dd;
     this.nacimientoToday = yyyy + '-' + mm + '-' + dd;
       $(document).ready(function () {
+        // $("#edad").children("div").children("div").removeClass("row")
+        $("#edad").children("div").addClass("row3")
+        $("#edad").children("div").children("div.row.align-items-center.no-gutters").addClass("row2")
+        $("#edad").children("div").children("div").eq(1).children("div").children("div").css("color","#ffffff")
+        $("#edad").click(function(){
+          if(!$("#edad").children("div").children("div.row.align-items-center.no-gutters").hasClass("row2")){
+            $("#edad").children("div").children("div.row.align-items-center.no-gutters").addClass("row2")
+
+          }
+
+          $("#edad").children("div").children("div.row.align-items-center.no-gutters").addClass("row2")
+
+          $("#edad").children("div").children("div.row.align-items-center.no-gutters").children("div").css("color","#ffffff");
+          $("#edad").children("div").children("div").eq(1).addClass("contanerData")
+          $("#edad").children("div").children("div").eq(1).children("div").children("div").css("color","#ffffff")
+          $("#edad").children("div").children("div").eq(1).children("div").addClass("row3")
+
+        })
+
+        $("#edad").children("div").children("div.row.align-items-center.no-gutters").children('div.col-10.dl-abdtp-view-label').css("color","#ffffff")
+
         if($("#nombreBModal").val()!=''){
           $("#nombres").val($("#nombreBModal").val())
           $("#email").val($("#emailBModal").val())
           $("#username").val($("#email").val().split("@")[0])
           $("#idHidden").val($("#idBModal").val())
-
         }
       });
 
@@ -96,12 +176,19 @@ export class RegisterComponent implements OnInit {
                           localStorage.setItem('currentRol', response.rol);
                               this.nav.fullSession(true)
                               this.blockUI.stop();
+                              this.blockUI.stop();
+                              this.blockUI.stop();
+                              this.blockUI.stop();
                         // this.cargarAll()
+                        $("#loginModal").modal('hide');
+                        $("#loginModal").modal('hide');
+                        $("#loginModal").modal('hide');
+                        $("#loginModal").modal('hide');
+                        $("#loginModal").modal('hide');
 
                           setTimeout(() => {
                             $("#loginModal").modal('hide');
                           }, 100);
-                          $("#loginModal").modal('hide');
                           this.createSuccess('Usted ya esta Registrado')
                           setTimeout(() => {
                           $("#loginModal").modal('hide');
@@ -181,9 +268,11 @@ export class RegisterComponent implements OnInit {
     }
 
     return edad;
-}
+  }
 
   insert(formValue:any){
+    let fecha
+      let stoday = formValue.year + '-' + formValue.month + '-' + formValue.day;
 
     this.blockUI.start();
     if(formValue.nombres==""){
@@ -196,8 +285,8 @@ export class RegisterComponent implements OnInit {
       formValue.idHidden =$("#idHidden").val();
     }
     formValue.dpi =  formValue.dpi.replace(/ /g, '').replace(/-/g, '')
-    formValue.birthday =  formValue.edad
-    formValue.edad =  this.calcularEdad(formValue.edad)
+    formValue.birthday =  stoday
+    formValue.edad =  this.calcularEdad(stoday)
     formValue.password =  formValue.password
     formValue.username =  formValue.email.split('@')[0]
     let string = formValue.dpi.replace(/ /g, '').replace(/-/g, '')+formValue.telefono+":"+formValue.username;
@@ -206,6 +295,7 @@ export class RegisterComponent implements OnInit {
     formValue.facebook_id = formValue.idHidden;
     // console.log(formValue);
     if(formValue.edad>=18){
+      this.blockUI.stop();
 
     this.mainService.create(formValue)
                       .then(async response => {

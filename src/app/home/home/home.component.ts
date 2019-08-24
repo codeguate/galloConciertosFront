@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
   mySlideOptions={items: 3, dots: false, center:true,nav: true,loop:true,autoplay:true,autoplayTimeout:3000,autoplayHoverPause:true,autoWidth:true};
   myCarouselOptions={items: 3, dots: true, nav: true};
   selectedData: any;
+  useFacebook: boolean=true;
   facebookData = {
     id:'',
     email:'',
@@ -61,13 +62,18 @@ export class HomeComponent implements OnInit {
       // };
 
       // fb.init(initParams);
-      FB.init({
-        appId: '1217671678415675',
-        cookie: false,  // enable cookies to allow the server to access
-        // the session
-        xfbml: true,  // parse social plugins on this page
-        version: 'v4.0' // use graph api version 2.5
-      });
+      if (typeof(FB) != 'undefined'
+      && FB != null ) {
+        FB.init({
+          appId: '1217671678415675',
+          cookie: false,  // enable cookies to allow the server to access
+          // the session
+          xfbml: true,  // parse social plugins on this page
+          version: 'v4.0' // use graph api version 2.5
+        });
+      } else {
+        this.useFacebook=false;
+      }
 
      }
 
@@ -86,6 +92,7 @@ export class HomeComponent implements OnInit {
       $('#inSeachForm').addClass('d-none');
       $('#logoTipo').removeClass('d-none');
       this.blockUI.stop();
+      this.nav.logout();
     }, 500);
     $(document).ready(data => {
       // this.checkLoginState();

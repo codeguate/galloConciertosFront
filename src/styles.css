@@ -84,6 +84,23 @@ html, body {
 .row{
   margin: 0 !important;
 }
+.row3{
+  margin-right: -15px!important;
+  margin-left: -15px!important;
+}
+.row2{
+  display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px!important;
+    margin-left: -15px!important;
+}
+
+.contanerData{
+  height: 100px!important;
+  overflow-y: auto;
+  padding-left: 15px!important;
+  padding-right: 15px!important;
+}
 @media only screen and (max-width: 1000px){
   .body-interno{
     background-image: url(./assets/png/fondo-mobile.png) !important;
@@ -111,7 +128,25 @@ html, body {
   .row{
     margin: 0 !important;
   }
+
   .body-interno{
     height: inherit !important;
+  }
+  .row3{
+    margin-right: -15px!important;
+    margin-left: -15px!important;
+  }
+  .row2{
+    display: flex;
+      flex-wrap: wrap;
+      margin-right: -15px!important;
+      margin-left: -15px!important;
+  }
+
+  .contanerData{
+    height: 100px!important;
+    overflow-y: auto;
+    padding-left: 15px!important;
+    padding-right: 15px!important;
   }
 }
