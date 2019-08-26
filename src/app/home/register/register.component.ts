@@ -96,7 +96,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     for (let index = 1; index < 32; index++) {
-      this.days.push({id:index});
+      this.days.push({id:index>9?index:"0"+index});
 
     }
     for (let index = 2001; index > 1900; index--) {

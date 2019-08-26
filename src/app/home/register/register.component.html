@@ -1,10 +1,10 @@
 
 <div class="">
     <div class="row">
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 d-flex" >
-        <img src="assets/png/logo.png" class=" img-fluid m-auto logo" style="max-height: 100%;" >
+      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 d-flex"  >
+        <img src="assets/png/logo.png" class=" img-fluid m-auto logo" id="logoRegistro"  style="max-height: 100%;" >
       </div>
-      <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 text-left border-secondary round-border">
+      <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 text-left border-secondary round-border" id="register-formRow">
           <form class="form-signin" autocomplete="off" id="register-form"  #registerForm="ngForm" (ngSubmit)="insert(registerForm.value)">
 
             <h1 class="h3 text-light mb-3 mt-3 font-weight-bold">
@@ -18,8 +18,17 @@
                 <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   <input type="email" name="email" id="email" ngModel #email="ngModel" (blur)="usernameFind(email.value)" [email]="true" [ngClass]="{'border border-danger': ((email.dirty || email.touched) && email.invalid ),'border border-success': ((email.dirty || email.touched) && !email.invalid )}" class="form-control gallo-inputs" placeholder="Correo Electrónico" required="required" title="Correo Electronico">
                 </div>
-                <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6 w-50">
                   <input type="text" name="username" id="username" ngModel #username="ngModel" class="form-control gallo-inputs" placeholder="Usuario" [(ngModel)]="usernameF" required="required" title="Usuario">
+                </div>
+
+                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6 w-50">
+                  <select name="genero" id="genero" ngModel #genero="ngModel" class="form-control gallo-selects" required="required" title="Genero">
+                    <option value="">Sexo</option>
+                    <option value="M">Hombre</option>
+                    <option value="F">Mujer</option>
+                  </select>
+                  <!-- <input type="text" name="genero" id="genero" ngModel #genero="ngModel" class="form-control gallo-inputs " placeholder="Genero" required="required" title="Genero" > -->
                 </div>
                 <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12 password">
                   <input type="password" name="password" id="password" ngModel #password="ngModel" class="form-control gallo-password" placeholder="Password" required="required" title="Password">
@@ -35,7 +44,7 @@
                   <input type="text" name="dpi" id="dpi" ngModel #dpi="ngModel" class="form-control gallo-inputs" placeholder="DPI" required="required" title="DPI" (keyup)="cuiIsValid($event)" [(ngModel)]="DPI">
                   <input type="hidden" name="idHidden" id="idHidden" ngModel #idHidden="ngModel" class="form-control gallo-inputs">
                 </div>
-                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6 w-50 row">
+                <div class="my-2 col-xs-12 col-sm-12 col-md-12 col-lg-12 w-100 row">
 
                   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                       <select name="year" id="year" ngModel #year="ngModel" *ngIf="years" class="form-control gallo-selects" required="required" title="year">
@@ -60,14 +69,6 @@
 
 
                   <!-- <input type="date" name="edad" id="edad" ngModel #edad="ngModel" class="form-control gallo-num" placeholder="Edad"  required="required" title="Edad" > -->
-                </div>
-                <div class="my-2 col-xs-6 col-sm-6 col-md-6 col-lg-6 w-50">
-                  <select name="genero" id="genero" ngModel #genero="ngModel" class="form-control gallo-selects" required="required" title="Genero">
-                    <option value="">Erés</option>
-                    <option value="M">Hombre</option>
-                    <option value="F">Mujer</option>
-                  </select>
-                  <!-- <input type="text" name="genero" id="genero" ngModel #genero="ngModel" class="form-control gallo-inputs " placeholder="Genero" required="required" title="Genero" > -->
                 </div>
 
                 <div class="my-2 col-xs-12 col-sm-8 col-md-6 col-lg-4  offset-sm-2 offset-md-3 offset-lg-4">

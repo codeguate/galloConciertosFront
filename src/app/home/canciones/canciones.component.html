@@ -17,7 +17,7 @@
       <!-- <ngx-select placeholder="Vota por" class="gallo-inputs mx-auto"  [items]="canciones" [(ngModel)]="cancion3"></ngx-select> -->
       </div>
       <div class="my-2 d-flex w-100">
-          <button class="btn btn-lg btn-primary btn-block gallo-btn m-auto hoverClick" type="button" (click)="navegar('../../bandas')" >Atras</button>
+          <button class="btn btn-lg btn-primary btn-block gallo-btn m-auto hoverClick" type="button" (click)="navegar('../../bandas')" >Atrás</button>
         <button class="btn btn-lg btn-primary btn-block gallo-btn m-auto" id="btnVotar" [disabled]="(cancion1=='' || cancion2=='' || cancion3=='') " type="button" (click)="cargarAreas(1);">Votar</button>
     </div>
     </div>
@@ -60,12 +60,12 @@
                     <div class="w-50 d-flex">
                         <img src="assets/png/logo.png" class="m-auto" style="max-width: 100%; width: 50vw;">
                     </div>
-                    <div class="w-50 d-flex">
+                    <div class="w-50 d-flex" id="graciasTexto">
                       <img src="assets/png/gracias.png" class="m-auto" style="width:100%;max-height: 100%;">
                     </div>
                 </div>
                 <div class="w-100 d-flex">
-                  <button class="btn btn-lg btn-primary btn-block gallo-btn m-auto hoverClick" type="button" (click)="navegar('../../bandas')" >Atras</button>
+                  <button class="btn btn-lg btn-primary btn-block gallo-btn m-auto hoverClick" type="button" (click)="navegar('../../bandas')" >Atrás</button>
                 </div>
 
             </div>

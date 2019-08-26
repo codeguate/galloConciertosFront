@@ -76,6 +76,14 @@ display: flex;
     padding-left: 3rem;
 
   }
+  #logoRegistro{
+    height: 147px;
+    width: 161px;
+  }
+  #register-formRow{
+    width: 575px;
+    height: 436px;
+  }
 
 }
 .row2{

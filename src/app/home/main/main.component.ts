@@ -107,8 +107,8 @@ navegar(url:string,id?:number){
   cargarSlides(){
       this.blockUI.start();
       let today = new Date();
-      let dd = String(today.getDate()).padStart(2, '0');
-      let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      let dd = String(today.getDate()>9?today.getDate():"0"+today.getDate());
+      let mm = String((today.getMonth() + 1)>9?(today.getMonth() + 1):"0"+(today.getMonth() + 1)); //January is 0!
       let yyyy = today.getFullYear();
       let stoday = yyyy + '-' + mm + '-' + dd;
       let data = {
