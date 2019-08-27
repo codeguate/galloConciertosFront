@@ -4,34 +4,35 @@
     <img src="assets/png/logo.png" class="img-fluid m-auto logo" style="max-height: 100%;">
   </div>
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 h-100 d-flex">
-    <div class="h-auto m-auto w-100 pb-5" style="_margin-top:100px;">
+    <div class="gallo-vercent">
+      <div class="h-auto w-100 pb-5" style="_margin-top:100px;">
 
-        <img src="assets/png/titulo.png" class="img-fluid" style="max-height: 100%;max-width: 80%;">
-        <img src="assets/png/fila1.png" class="img-fluid my-2" style="max-height: 100%;max-width: 100%;">
-        <img src="assets/png/bandas.png" class="img-fluid mb-auto" style="max-height: 100%;max-width: 80%;">
-        <div class="w-100 h-auto my-5 mobile-flex text-center">
-          <div class="mobile-buton my-2 " >
-            <button [class.w-100]="!useFacebook" class="btn btn-lg btn-default btn-block mx-auto gallo-btn-ingresar" type="button" (click)="mostrar('login',true);"></button>
-          </div>
-          <div class="mobile-buton my-2 " >
-            <button [class.w-100]="!useFacebook" class="btn btn-lg btn-default btn-block mx-auto gallo-btn-registrate" type="button" (click)="mostrar('registro',true);"></button>
-          </div>
+          <img src="assets/png/titulo.png" class="img-fluid" style="max-height: 100%;max-width: 80%;">
+          <img src="assets/png/fila1.png" class="img-fluid my-2" style="max-height: 100%;max-width: 100%;">
+          <img src="assets/png/bandas.png" class="img-fluid mb-auto" style="max-height: 100%;max-width: 80%;">
+          <div class="w-100 h-auto my-5 mobile-flex text-center">
+            <div class="mobile-buton my-2 " >
+              <button [class.w-100]="!useFacebook" class="btn btn-lg btn-default btn-block mx-auto gallo-btn-ingresar" type="button" (click)="mostrar('login',true);"></button>
+            </div>
+            <div class="mobile-buton my-2 " >
+              <button [class.w-100]="!useFacebook" class="btn btn-lg btn-default btn-block mx-auto gallo-btn-registrate" type="button" (click)="mostrar('registro',true);"></button>
+            </div>
 
-        </div>
-        <div class="w-100 h-auto my-3 mobile-flex text-center mb-3 " >
-            <div class="mobile-buton ml-auto my-2">
-                <button class="btn btn-lg btn-default btn-block gallo-btn-instrucciones  img-fluid mx-auto" type="button" (click)="abrir('instruccionesModal',true);"></button>
-              </div>
-          <div class="mobile-buton mr-auto my-2" *ngIf="useFacebook">
-             <button class="btn btn-lg btn-default btn-block gallo-btn-facebook img-fluid mx-auto" type="button" (click)="loginWithFacebook()"></button>
           </div>
-        </div>
-        <input type="hidden" id="emailBModal">
-        <input type="hidden" id="nombreBModal">
-        <input type="hidden" id="idBModal">
+          <div class="w-100 h-auto my-3 mobile-flex text-center mb-3 " >
+              <div class="mobile-buton ml-auto my-2">
+                  <button class="btn btn-lg btn-default btn-block gallo-btn-instrucciones  img-fluid mx-auto" type="button" (click)="abrir('instruccionesModal',true);"></button>
+                </div>
+            <div class="mobile-buton mr-auto my-2" *ngIf="useFacebook">
+              <button class="btn btn-lg btn-default btn-block gallo-btn-facebook img-fluid mx-auto" type="button" (click)="loginWithFacebook()"></button>
+            </div>
+          </div>
+          <input type="hidden" id="emailBModal">
+          <input type="hidden" id="nombreBModal">
+          <input type="hidden" id="idBModal">
 
+      </div>
     </div>
-
   </div>
 </div>
 

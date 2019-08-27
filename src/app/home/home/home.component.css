@@ -115,7 +115,7 @@ input[type="radio"] {
     margin-bottom: 100px;
     margin-left: 10%!important;
   }
-  }
+}
 @media only screen and (max-width: 999px) {
   .logo{
     width: 345px;
@@ -307,12 +307,17 @@ input[type="radio"]:checked ~ label {
     background-image: url(./../../../assets/png/boton-instrucciones.png);
     background-repeat: no-repeat;
     background-position: center;
-  background-size: auto 62px;
-  color: #ffffff;
+    background-size: auto 62px;
+    color: #ffffff;
   }
   .gallo-btn-instrucciones{
     width: 100%;
     background-size: contain;
+  }
+  .gallo-vercent {
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
   }
   .gallo-btn-ingresar ,.gallo-btn-registrate {
     max-width: 238px;
