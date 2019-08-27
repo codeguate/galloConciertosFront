@@ -36,22 +36,7 @@ mySlideOptions={margin:10,
   autoplayTimeout:3000,
   autoplayHoverPause:true,
   autoWidth:true,
-  responsiveClass:true,
-  responsive:{
-      0:{
-          items:1,
-          nav:false
-      },
-      600:{
-          items:3,
-          nav:false
-      },
-      1000:{
-          items:5,
-          nav:false,
-          loop:true
-      }
-  }};
+  };
 myCarouselOptions={items: 3, dots: true, nav: true};
 selectedData: any;
 @BlockUI() blockUI: NgBlockUI;
@@ -150,14 +135,14 @@ getInternetExplorerVersion()
                             // console.log(response);
                             setTimeout(() => {
                               $(".owl-next").css("font-size", '4rem');
-                              $(".owl-next").css('margin-left', '10%');
+                              $(".owl-next").css('right', '10%');
                               $(".owl-next").css('margin-top', '2%');
                               $(".owl-next").css('position', 'absolute');
                               $(".owl-next").css('z-index', '100');
                               $(".owl-next").css('color', '#ffffff');
 
                               $(".owl-prev").css("font-size", '4rem');
-                              $(".owl-prev").css('right', '60%');
+                              $(".owl-prev").css('left', '10%');
                               $(".owl-prev").css('margin-top', '2%');
                               $(".owl-prev").css('position', 'absolute');
                               $(".owl-prev").css('color', '#ffffff');

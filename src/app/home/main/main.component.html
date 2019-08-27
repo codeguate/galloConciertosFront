@@ -1,18 +1,21 @@
 <div class="row w-auto pb-5" >
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 contant2 d-flex">
-      <img src="assets/png/logo.png" class="img-fluid mx-auto logo" style="max-height: 100%;">
+        <div class="gallo-vercent">
+          <img src="assets/png/logo.png" class="img-fluid mx-auto logo" style="max-height: 100%;">
+        </div>
     </div>
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 contant2 d-flex">
-      <div class="my-auto w-100" [class.mi-5]="explorer">
-          <img src="assets/png/elige.png" class="img-fluid mx-auto mb-3 " >
-
-          <owl-carousel  *ngIf="Table" style="width: 100%;height:75px;" [options]="mySlideOptions"  [carouselClasses]="['owl-theme', 'sliding']" >
-              <li *ngFor="let data of Table"  style="padding-right:1rem;padding-left:1rem;list-style: none;cursor:pointer;text-align: center;display:flex;" (click)="navegar('votar/'+data.id,data.id)">
-                  <!-- <img class="logo" style="width: auto; height:75px;" src="{{(data.logo!='')?data.logo:'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_MENUpage_perseus/apps/facebook.288e99d.png'}}"> -->
-                  <img class="logo" style="width: 300px; height:300px;margin:auto;" src="{{data.bandas.logo}}">
-              </li>
-            </owl-carousel>
-      </div>
+        <div class="gallo-vercent">
+          <div class="my-auto w-100" [class.mi-5]="explorer">
+              <img src="assets/png/elige.png" class="img-fluid mx-auto mb-3 " >
+              <owl-carousel  *ngIf="Table" style="width: 100%;height:75px;" [options]="mySlideOptions"  [carouselClasses]="['owl-theme', 'sliding']" >
+                  <li *ngFor="let data of Table"  style="padding-right:1rem;padding-left:1rem;list-style: none;cursor:pointer;text-align: center;display:flex;" (click)="navegar('votar/'+data.id,data.id)">
+                      <!-- <img class="logo" style="width: auto; height:75px;" src="{{(data.logo!='')?data.logo:'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_MENUpage_perseus/apps/facebook.288e99d.png'}}"> -->
+                      <img class="logo" style="width: 300px; height:300px;margin:auto;" src="{{data.bandas.logo}}">
+                  </li>
+                </owl-carousel>
+          </div>
+        </div>
     </div>
   </div>
 

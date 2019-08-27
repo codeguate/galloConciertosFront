@@ -3,11 +3,22 @@
   padding: 0;
   margin: 0;
 }
+@font-face {
+  font-family: "myriad pro";
+  src: url(./assets/fonts/Hindenburg-Italic.ttf);
+  }
+  @font-face {
+    font-family: 'myriad pro ie';
+    src: url(./assets/fonts/hindenburg-italic-webfont.woff2) format('woff2'),
+         url(./assets/fonts/hindenburg-italic-webfont.woff) format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 html,
 .body {
   width: 100% !important;
   height: auto !important;
-  overflow:hidden;
   font-size: 1rem;
   text-align: left;
   background-attachment: fixed;

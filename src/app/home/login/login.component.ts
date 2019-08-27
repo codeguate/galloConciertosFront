@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   @Input() public foreignId: number;
   @Input() public idBis: string;
   @BlockUI() blockUI: NgBlockUI;
+  explorer:boolean = false
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -36,6 +37,25 @@ export class LoginComponent implements OnInit {
     this.type = this.route.snapshot.paramMap.get("type");
     // console.log(this.type);
 
+  }
+  getInternetExplorerVersion()
+  {
+    var rv = -1;
+    if (navigator.appName == 'Microsoft Internet Explorer')
+    {
+      var ua = navigator.userAgent;
+      var re = new RegExp("MSIE ([0-9]{1,}[\\.0-9]{0,})");
+      if (re.exec(ua) != null)
+        rv = parseFloat( RegExp.$1 );
+    }
+    else if (navigator.appName == 'Netscape')
+    {
+      var ua = navigator.userAgent;
+      var re  = new RegExp("Trident/.*rv:([0-9]{1,}[\\.0-9]{0,})");
+      if (re.exec(ua) != null)
+        rv = parseFloat( RegExp.$1 );
+    }
+    return rv;
   }
   public options = {
     position: ["bottom", "right"],
@@ -126,6 +146,14 @@ createError(error) {
     $('#searchContent').addClass('d-none');
     $('#inSeachForm').removeClass('d-none');
     $('#logoTipo').addClass('d-none');
+    if(this.getInternetExplorerVersion()>(-1)){
+      this.explorer = true
+    }
+
+    if(this.explorer){
+      console.log("Esta pagina funciona mejor en otro EXPLORADOR, no en este!");
+
+    }
     // this.getParams()
   }
   mostrar(id){

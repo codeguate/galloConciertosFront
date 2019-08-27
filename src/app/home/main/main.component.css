@@ -111,7 +111,7 @@ input[type="radio"] {
 @media only screen and (min-width: 1200px) {
   .logo{
     width: 635px;
-    height: 652px;
+    height: 600px;
     margin-top: 100px;
     margin-left: 10%!important;
 }
@@ -223,4 +223,10 @@ input[type="radio"]:checked ~ label {
 }
 .contant2{
   height: auto!important;
+}
+.gallo-vercent {
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  width: 100%;
 }
