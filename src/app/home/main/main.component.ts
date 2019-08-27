@@ -27,9 +27,9 @@ explorer:boolean = false
 mySlideImages = [1,2,3].map((i)=> `https://picsum.photos/640/480?image=${i}`);
 myCarouselImages =[1,2,3,4,5,6].map((i)=>`https://picsum.photos/640/480?image=${i}`);
 mySlideOptions={margin:10,
-  dots: false,
+  dots: true,
   center: true,
-  items:7,
+  items:5,
   nav: true,
   loop:true,
   autoplay:true,
@@ -39,15 +39,15 @@ mySlideOptions={margin:10,
   responsiveClass:true,
   responsive:{
       0:{
-          items:3,
+          items:1,
           nav:false
       },
       600:{
-          items:5,
+          items:3,
           nav:false
       },
       1000:{
-          items:7,
+          items:5,
           nav:false,
           loop:true
       }

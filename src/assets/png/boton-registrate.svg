@@ -1,0 +1,28 @@
+<svg id="boton-registrate" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="238" height="62" viewBox="0 0 238 62">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        font-size: 104.208px;
+        fill: #fff;
+        text-anchor: middle;
+      }
+
+      .cls-1 {
+        font-family: Hindenburg;
+        font-style: italic;
+      }
+
+      .cls-2 {
+        font-family: "Myriad Pro";
+      }
+    </style>
+  </defs>
+  <g id="boton_copia_2" data-name="boton copia 2">
+    <image id="Objeto_inteligente_vectorial" data-name="Objeto inteligente vectorial" x="10" width="228" height="62" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOQAAAA+CAYAAAA78rfEAAAEaElEQVR4nO3dTahUZRzH8e/MFSsriaSFRS/gIkkrs6AiDLVNQbUIirAIFAJ7gUhtU+gicKHSthfBohdtU5teFwVhLYLg2pvEjdpki6QguIsMMp7iuTz3Nvd2Zuac55yZuTjfD4gwcObMPX9+PM8553lptVotRqQNfALcOqofIA3ZCWAV8PfsaUMI835Be4QV2WkYNWYuA+7r9SePqoW8FvgCWDqKk0sjNAncMHv6xdBCng28YRg1pq4HNnX700cRyL3A2hGcV1osdnX7HcPusm4GPo7nXSxXRhqRNcB3o+yyXgC8ahilGTuKLsMwW8jDwBZrIc34C7g8hHCy83IMq4W83zBK88SHmo8v/HAYLeQlwPHUZZX0n9/ju8kQwh+znwy6hWyl+0bDKP3fhcDWzk8HHcgngNsshNTVk+12ey6Hg+yyXgUcA86yFlJP94YQ3mKALeTS9FTVMEr9zQ0UGFQgnwXWWQiplBvb7fYtDCiQG4CnrINUyUwr2fQ95HLga+AKayFV8g+weqLhQL4EbLQOUmUxiEuabCHvAd62DlK2k00FciXwLbDCWkjZHmjioU5M9MuGUarlzRDCkSYCuR243VpI2eLiV4/SwFPWK4EvgXOshZQlzlDeHEI4Ss33kEvS2jiGUcp3YDaM1Azkns7VsyRVFnuXuzsPyu2y3gx8BkxYAynLn8D6EMJU58E5LeR5wOuGUaolLhQ+tfALcgL5XFoOXVKe94EXi46s2mW9C3jHIkjZfgWuTv/XWrn8IuCQdZBq2TYbxiJVAnkohVJSnhdSd7Wrsl3Wh4GDFkHKNpX29TjV+QULu6xlArkqzXE811pIWU4DN6U1puapeg85kV5xGEYp356iMBbpF8in0yAASXk+BfaXPbJXlzUOi/s8jVmVVN00cE2azVGobJd1WRo4bhilfI/0CmORboE8kKZWScpzJE46rnpkUZc1Tjb+0CJI2U6krup0vy/o99pjRVobZ6W1kLLEhG1KD3P66ncPedAwSrXsLxvGIp0t5ENp6zhJeY6lAQCnyx7drcsaVxr/BjjfQkhZ4oTj64Dvqxxc1GWN/14zjFItO6qGsUg7bYyzwVpI2d5L22jUFrus8RHtpdZCyhLnNq4Ffss5uKjLutc6SNm25oaxSGwh4/C4r4A11kSq5HngsTqXrNtT1juAD6yFVFqccLw+PV3N1m1gQBwq95G1kEqJ7xm31A1jkc6ROrvSsB9Jve1Oq443rjOQcWDAKxZC6ulomg01EAsHl8dxrD+4ZIdUaDqtqfpzU5en3+DyX4B91kIqtL3JMBYpmg+5LLWSF1sTac5h4MGmL0eZJTziupHPWAdpzk913zeW1W2RqxjUSWCdNdGYi03YxrT9YuPKLnIV0nZZ0rjbN6gwFum3cvm7wJ3jXhGNrcm0LnHpCcdVVd1KYDVw3M1ZNYZOpaFxtec49lJ1K4GpbhtLSme4nYMOY5Eym+3ELeh+BJaf+TWQZsRbtbuHcSnmtZDAv8cf27OLp5meAAAAAElFTkSuQmCC"/>
+    <image id="Objeto_inteligente_vectorial-2" data-name="Objeto inteligente vectorial" width="218" height="62" xlink:href="data:img/png;base64,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"/>
+  </g>
+  <g id="texto_copia" data-name="texto copia">
+    <text id="Registrate" class="cls-1" transform="translate(115.987 41.983) scale(0.282)">Registrate</text>
+    <text id="_" data-name="´" class="cls-2" transform="translate(101.986 36.984) scale(0.282)">´</text>
+  </g>
+</svg>

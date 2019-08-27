@@ -18,6 +18,7 @@ export class CancionesComponent implements OnInit {
   id:number
   sliderInicio = 0;
   SelectedData:any = null
+  explorer:boolean = false
   Table:any
   mySlideImages = [1,2,3].map((i)=> `https://picsum.photos/640/480?image=${i}`);
   myCarouselImages =[1,2,3,4,5,6].map((i)=>`https://picsum.photos/640/480?image=${i}`);
@@ -63,6 +64,14 @@ export class CancionesComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.getInternetExplorerVersion()>(-1)){
+      this.explorer = true
+    }
+
+    if(this.explorer){
+      console.log("Esta pagina funciona mejor en otro EXPLORADOR, no en este!");
+
+    }
     this.cargarFunciones();
     this.getParams();
   }
@@ -142,9 +151,6 @@ export class CancionesComponent implements OnInit {
                                 }else
                                 if(this.cancion2==""){
                                   this.cancion2=element.titulo
-                                }else
-                                if(this.cancion3==""){
-                                  this.cancion3=element.titulo
                                 }
                               }
                             });
@@ -222,8 +228,7 @@ export class CancionesComponent implements OnInit {
       banda:this.SelectedData.social.id,
       votos:[
         this.cancion1,
-        this.cancion2,
-        this.cancion3
+        this.cancion2
       ]
     }
       this.parentService.votar(data)

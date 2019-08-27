@@ -7,6 +7,7 @@ html,
 .body {
   width: 100% !important;
   height: auto !important;
+  overflow:hidden;
   font-size: 1rem;
   text-align: left;
   background-attachment: fixed;

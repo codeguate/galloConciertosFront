@@ -100,15 +100,24 @@ input[type="radio"] {
   max-height: 100%;
   max-width: 50%;
 }
-@media only screen and (min-width: 1000px) {
-.logo{
-
-  width: 744px;
-  height: 678px;
-  margin-top: 200px;
-  margin-bottom: 200px;
-  margin-left: 10%!important;
+@media only screen and (min-width: 900px) {
+  .logo{
+    width: 574px;
+    height: 478px;
+    margin-top: 100px;
+    margin-left: 10%!important;
+  }
 }
+@media only screen and (min-width: 1200px) {
+  .logo{
+    width: 635px;
+    height: 652px;
+    margin-top: 100px;
+    margin-left: 10%!important;
+}
+  .mi-5{
+    margin-top: 100px;
+  }
 }
 @media only screen and (max-width: 1000px) {
   .logo{

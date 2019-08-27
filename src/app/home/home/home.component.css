@@ -109,8 +109,8 @@ input[type="radio"] {
 }
 @media only screen and (min-width: 1000px) {
   .logo{
-    width: 744px;
-    height: 678px;
+    width: 635px;
+    height: 652px;
     margin-top: 100px;
     margin-bottom: 100px;
     margin-left: 10%!important;
