@@ -10,7 +10,10 @@
   background-position: center;
   background-size: 100%;
 }
-
+.completer-dropdown-holder{
+  height: 300px!important;
+  overflow-y: auto;
+}
 .gallo-inputs>div>input{
   padding-top: 1rem;
   padding-bottom: 1rem;

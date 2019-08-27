@@ -112,6 +112,23 @@ input[type="radio"] {
   z-index: 5000;
   margin-right: 2%;
 }
+.gallo-btn{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 3rem;
+  padding-left: 2rem;
+  height: 62px;
+  font-family: "myriad pro","myriad pro ie";
+  font-size: 20pt;
+  width: 268px;
+  background-color: rgba(0,0,0,0);
+  border: 0;
+  background-image: url(./../../../assets/png/boton.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 62px;
+  color: #ffffff;
+}
 @media only screen and (min-width: 1000px) {
   .logo{
     width: 635px;
@@ -122,6 +139,23 @@ input[type="radio"] {
   }
 }
 @media only screen and (max-width: 999px) {
+  .gallo-btn{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 3rem;
+    padding-left: 2rem;
+    height: 62px;
+    font-family: "myriad pro","myriad pro ie";
+    font-size: 20pt;
+    width: 268px;
+    background-color: rgba(0,0,0,0);
+    border: 0;
+    background-image: url(./../../../assets/png/boton.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 62px;
+    color: #ffffff;
+  }
   .logo{
     width: 345px;
     height: 315px!important;
