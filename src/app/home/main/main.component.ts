@@ -23,6 +23,7 @@ sliderInicio = 0;
 public _id: number;
 public search: any;
 agregados: any[] = [];
+explorer:boolean = false
 mySlideImages = [1,2,3].map((i)=> `https://picsum.photos/640/480?image=${i}`);
 myCarouselImages =[1,2,3,4,5,6].map((i)=>`https://picsum.photos/640/480?image=${i}`);
 mySlideOptions={margin:10,
@@ -78,6 +79,14 @@ ngOnInit() {
     if(datos){
       this.agregados = JSON.parse(datos);
     }
+    if(this.getInternetExplorerVersion()>(-1)){
+      this.explorer = true
+    }
+
+    if(this.explorer){
+      console.log("Esta pagina funciona mejor en otro EXPLORADOR, no en este!");
+
+    }
   setTimeout(() => {
     $('html, body').animate({scrollTop:0}, '300');
     $('#searchContent').removeClass('d-none');
@@ -103,6 +112,25 @@ navegar(url:string,id?:number){
   this.blockUI.stop()
 
   }
+}
+getInternetExplorerVersion()
+{
+  var rv = -1;
+  if (navigator.appName == 'Microsoft Internet Explorer')
+  {
+    var ua = navigator.userAgent;
+    var re = new RegExp("MSIE ([0-9]{1,}[\\.0-9]{0,})");
+    if (re.exec(ua) != null)
+      rv = parseFloat( RegExp.$1 );
+  }
+  else if (navigator.appName == 'Netscape')
+  {
+    var ua = navigator.userAgent;
+    var re  = new RegExp("Trident/.*rv:([0-9]{1,}[\\.0-9]{0,})");
+    if (re.exec(ua) != null)
+      rv = parseFloat( RegExp.$1 );
+  }
+  return rv;
 }
   cargarSlides(){
       this.blockUI.start();

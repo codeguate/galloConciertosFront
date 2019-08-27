@@ -15,6 +15,9 @@ html,
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+.mi-5{
+  margin-top: 165px!important;
+}
 html, body {
   background-color: #ffffff !important;
 }

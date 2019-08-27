@@ -3,7 +3,7 @@
       <img src="assets/png/logo.png" class="img-fluid mx-auto logo" style="max-height: 100%;">
     </div>
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 contant2 d-flex">
-      <div class="my-auto w-100">
+      <div class="my-auto w-100" [class.mi-5]="explorer">
           <img src="assets/png/elige.png" class="img-fluid mx-auto mb-3 " >
 
           <owl-carousel  *ngIf="Table" style="width: 100%;height:75px;" [options]="mySlideOptions"  [carouselClasses]="['owl-theme', 'sliding']" >
