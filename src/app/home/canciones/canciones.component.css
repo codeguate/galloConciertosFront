@@ -136,3 +136,11 @@
   }
 
 }
+
+
+.gallo-vercent {
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  width: 100%;
+}

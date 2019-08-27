@@ -138,7 +138,7 @@ export class HomeComponent implements OnInit {
           $("#nombreBModal").val(response.first_name+" "+response.last_name)
           $("#idBModal").val(response.id)
           // $("#getFacebookData").click();
-          $(".gallo-btn-registrate").click()
+          $("#gallo-btn-registrate").click()
         }
       }
   );
@@ -168,12 +168,12 @@ export class HomeComponent implements OnInit {
                                   this.router.navigate([`./bandas`])
                                 }, 200);
                           }else{
-                            $(".gallo-btn-registrate").click()
+                            $("#gallo-btn-registrate").click()
                           }
 
 
                         }).catch(error => {
-                          $(".gallo-btn-registrate").click()
+                          $("#gallo-btn-registrate").click()
                           console.clear
 
                           this.blockUI.stop();
@@ -193,7 +193,7 @@ export class HomeComponent implements OnInit {
               $("#nombreBModal").val(result.first_name+" "+result.last_name)
               $("#idBModal").val(result.id)
               // $("#getFacebookData").click();
-              $(".gallo-btn-registrate").click()
+              $("#gallo-btn-registrate").click()
             }
         }
       )

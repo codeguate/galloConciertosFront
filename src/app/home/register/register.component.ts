@@ -81,6 +81,7 @@ export class RegisterComponent implements OnInit {
   @Input() foreignId:number
   @Input() facebook:any
   selectedData:any
+  explorer:boolean = false
   today:any
   nacimientoToday:any
   public rowsOnPage = 5;
@@ -101,6 +102,14 @@ export class RegisterComponent implements OnInit {
     }
     for (let index = 2001; index > 1900; index--) {
       this.years.push({id:index});
+
+    }
+    if(this.getInternetExplorerVersion()>(-1)){
+      this.explorer = true
+    }
+
+    if(this.explorer){
+      console.log("Esta pagina funciona mejor en otro EXPLORADOR, no en este!");
 
     }
     $('#searchContent').addClass('d-none');
@@ -160,6 +169,25 @@ export class RegisterComponent implements OnInit {
     this.selected = dat;
   }
 
+  getInternetExplorerVersion()
+  {
+    var rv = -1;
+    if (navigator.appName == 'Microsoft Internet Explorer')
+    {
+      var ua = navigator.userAgent;
+      var re = new RegExp("MSIE ([0-9]{1,}[\\.0-9]{0,})");
+      if (re.exec(ua) != null)
+        rv = parseFloat( RegExp.$1 );
+    }
+    else if (navigator.appName == 'Netscape')
+    {
+      var ua = navigator.userAgent;
+      var re  = new RegExp("Trident/.*rv:([0-9]{1,}[\\.0-9]{0,})");
+      if (re.exec(ua) != null)
+        rv = parseFloat( RegExp.$1 );
+    }
+    return rv;
+  }
   buscarFacebook(id){
     this.BandasService.getUsersById(id)
                       .then(response => {
@@ -295,8 +323,6 @@ export class RegisterComponent implements OnInit {
     formValue.facebook_id = formValue.idHidden;
     // console.log(formValue);
     if(formValue.edad>=18){
-      this.blockUI.stop();
-
     this.mainService.create(formValue)
                       .then(async response => {
                         if(response.id){

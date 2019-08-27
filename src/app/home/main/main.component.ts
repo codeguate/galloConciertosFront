@@ -26,16 +26,18 @@ agregados: any[] = [];
 explorer:boolean = false
 mySlideImages = [1,2,3].map((i)=> `https://picsum.photos/640/480?image=${i}`);
 myCarouselImages =[1,2,3,4,5,6].map((i)=>`https://picsum.photos/640/480?image=${i}`);
-mySlideOptions={margin:10,
+mySlideOptions={margin:50,
   dots: true,
   center: true,
   items:5,
   nav: true,
   loop:true,
+  stagePadding:10,
   autoplay:true,
   autoplayTimeout:3000,
   autoplayHoverPause:true,
   autoWidth:true,
+  startPosition: 4,
   };
 myCarouselOptions={items: 3, dots: true, nav: true};
 selectedData: any;
