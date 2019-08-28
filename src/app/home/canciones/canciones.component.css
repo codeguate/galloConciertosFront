@@ -139,8 +139,17 @@
 
 
 .gallo-vercent {
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
-  width: 100%;
+  display: flex!important;
+  -webkit-align-items: center!important;
+  align-items: center!important;
+  width: 100%!important;
+  height: 100%!important;
+}
+.mtl-5{
+  margin-top: 180px!important;
+}
+
+.wl-5{
+  height: 234px!important;
+  width: 257px!important;
 }
