@@ -15,7 +15,7 @@ import { AuthGuard } from "./_guards/auth.guard";
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'bandas', component: MainComponent, canActivate: [AuthGuard]},
-  { path: 'home', component: HomeComponent, canActivate: [HomeGuard]},
+  { path: 'home', component: HomeComponent},
   { path: 'votar/:id', component: CancionesComponent, canActivate: [AuthGuard] },
   { path: 'evento/:id/:fecha', component: EventoComponent},
   { path: 'login', component: LoginComponent, canActivate: [HomeGuard] },

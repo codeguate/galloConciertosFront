@@ -331,7 +331,15 @@ input[type="radio"]:checked ~ label {
   background-size: auto 62px;
   color: #ffffff;
 }
+.Gallo h5{
+  font-size: 3.25rem!important;
 
+}
+.Gallo{
+  font-family: "myriad pro","myriad pro ie";
+  font-size: 2rem;
+  color: #ffffff;
+}
 
 @media only screen and (min-width: 1000px){
   .gallo-btn-instrucciones{
