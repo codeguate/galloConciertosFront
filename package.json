@@ -36,7 +36,7 @@
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.6.9",
     "jquery": "^3.2.1",
-    "jquery-ui": "^1.12.1",
+    "jquery-ui": "^1.13.0",
     "ng-block-ui": "^2.1.6",
     "ng2-charts": "^1.6.0",
     "ng2-completer": "^3.0.2",
